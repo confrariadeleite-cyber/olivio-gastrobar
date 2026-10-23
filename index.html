@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olivio Gastrobar — Matão/SP</title>
+<meta name="description" content="Olivio Gastrobar em Matão/SP: gastronomia afetiva, drinks e chopp. Peça online, solicite uma reserva ou planeje seu evento.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="./assets/olivio/logo-olivio.png">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Olivio Gastrobar — Matão/SP</title>
+<meta name="description" content="Olivio Gastrobar em Matão/SP: gastronomia afetiva, drinks e chopp. Peça online, solicite uma reserva ou planeje seu evento.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="./og-config.js"></script>
+<script src="./assets/olivio/image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0;background:#F7F1E7;color:#302B28;-webkit-text-size-adjust:100%;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#703446;text-underline-offset:3px}
+a:hover{color:#421D29}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid #703446;outline-offset:3px;border-radius:3px}
+input,select,textarea,button{font:inherit}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column;font-family:'Figtree',system-ui,sans-serif;color:#302B28;background:#F7F1E7;padding-bottom:{{ barPad }}">
+
+  <button onClick="{{ skipToMain }}" style="position:absolute;left:12px;top:-60px;z-index:100;min-height:44px;padding:0 16px;background:#421D29;color:#fff;border:0;border-radius:4px;font:600 15px 'Figtree',sans-serif;cursor:pointer" style-focus="top:12px">Ir para o conteúdo</button>
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(247,241,231,0.97);border-bottom:1px solid #E2D7C5">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px);height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px">
+      <a href="#/" aria-label="Olivio Gastrobar — página inicial" style="display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#703446;min-height:44px;justify-content:center;line-height:1">
+        <img src="assets/olivio/logo-olivio.png" alt="" width="712" height="416" style="height:54px;width:auto">
+      </a>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Principal" style="display:flex;align-items:center;gap:26px">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+            <a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;align-items:center;min-height:44px;text-decoration:none;color:#302B28;font:500 15px 'Figtree',sans-serif;border-bottom:2px solid {{ n.bar }}" style-hover="color:#703446">{{ n.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:10px">
+            <a href="#/reservar" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid #703446;border-radius:3px;color:#703446;text-decoration:none;font:600 14.5px 'Figtree',sans-serif" style-hover="background:#703446;color:#fff">Reservar mesa</a>
+            <a href="#/pedir" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;background:#703446;border-radius:3px;color:#fff;text-decoration:none;font:600 14.5px 'Figtree',sans-serif" style-hover="background:#421D29;color:#fff">Pedir online</a>
+          </div>
+        </sc-if>
+        <a href="#/sacola" aria-label="{{ cartAria }}" style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:3px;color:#421D29;text-decoration:none" style-hover="background:#EFE5D5;color:#421D29">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8Z"></path><path d="M9 8V6.5a3 3 0 0 1 6 0V8"></path></svg>
+          <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+            <span aria-hidden="true" style="position:absolute;top:3px;right:1px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#586044;color:#fff;font:700 11.5px/20px 'Figtree',sans-serif;text-align:center">{{ cartCount }}</span>
+          </sc-if>
+        </a>
+        <sc-if value="{{ isCompact }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ toggleMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="menu-movel" style="display:flex;align-items:center;gap:9px;min-height:46px;padding:0 14px;background:transparent;border:1.5px solid #421D29;border-radius:3px;color:#421D29;font:600 15px 'Figtree',sans-serif;cursor:pointer">
+            <span aria-hidden="true" style="display:flex;flex-direction:column;gap:4px"><span style="width:16px;height:1.8px;background:#421D29"></span><span style="width:16px;height:1.8px;background:#421D29"></span><span style="width:16px;height:1.8px;background:#421D29"></span></span>{{ menuLabel }}
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+      <nav id="menu-movel" aria-label="Principal" style="border-top:1px solid #E2D7C5;padding:6px clamp(18px,4vw,48px) 20px;display:flex;flex-direction:column;max-height:calc(100vh - 76px);overflow:auto">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;align-items:center;min-height:54px;border-bottom:1px solid #E9DFCF;text-decoration:none;color:#421D29;font:600 26px 'Cormorant Garamond',serif">{{ n.label }}</a>
+        </sc-for>
+        <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <a href="#/reservar" style="display:flex;align-items:center;justify-content:center;min-height:50px;border:1.5px solid #703446;border-radius:3px;color:#703446;text-decoration:none;font:600 15px 'Figtree',sans-serif">Reservar mesa</a>
+          <a href="#/pedir" style="display:flex;align-items:center;justify-content:center;min-height:50px;background:#703446;border-radius:3px;color:#fff;text-decoration:none;font:600 15px 'Figtree',sans-serif">Pedir online</a>
+        </div>
+      </nav>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ revisao }}" hint-placeholder-val="{{ true }}">
+    <p role="note" style="margin:0;padding:9px clamp(18px,4vw,48px);background:#EFE5D5;color:#421D29;font:500 13.5px/1.45 'Figtree',sans-serif;text-align:center">Modo revisão: itens marcados como exemplo, imagens provisórias e valores de referência aparecem identificados e devem ser confirmados antes da publicação.</p>
+  </sc-if>
+
+  <main id="conteudo" tabindex="-1" style="flex:1;outline:none">
+
+    <!-- ================= INÍCIO ================= -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+
+      <section data-screen-label="Início — abertura" aria-labelledby="hero-t">
+        <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(18px,4vw,48px) clamp(48px,7vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,72px);align-items:center">
+          <div style="max-width:560px">
+            <svg width="72" height="22" viewBox="0 0 72 22" aria-hidden="true" style="display:block;margin-bottom:18px"><path d="M4 15 C 22 13, 46 12, 68 8" stroke="#B69A6A" stroke-width="1.2" fill="none"></path><ellipse cx="18" cy="9.5" rx="6.5" ry="2.3" transform="rotate(-22 18 9.5)" fill="#586044"></ellipse><ellipse cx="30" cy="17.5" rx="6.5" ry="2.3" transform="rotate(18 30 17.5)" fill="#586044"></ellipse><ellipse cx="42" cy="7.5" rx="6.5" ry="2.3" transform="rotate(-24 42 7.5)" fill="#586044"></ellipse><ellipse cx="55" cy="14" rx="5.5" ry="2" transform="rotate(14 55 14)" fill="#586044"></ellipse></svg>
+            <h1 id="hero-t" style="margin:0;font:600 clamp(50px,6.6vw,88px)/0.98 'Cormorant Garamond',serif;letter-spacing:-0.01em;color:#421D29;text-wrap:balance">Boa comida. Bons encontros.</h1>
+            <p style="margin:22px 0 0;font:400 clamp(18px,1.6vw,20px)/1.55 'Figtree',sans-serif;color:#302B28;max-width:40ch;text-wrap:pretty">Gastronomia afetiva, drinks e momentos para compartilhar no Olivio Gastrobar.</p>
+            <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px">
+              <a href="#/cardapio" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;background:#703446;color:#fff;border-radius:3px;text-decoration:none;font:600 16px 'Figtree',sans-serif" style-hover="background:#421D29;color:#fff">Conhecer o cardápio</a>
+              <a href="#/reservar" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border:1.5px solid #703446;color:#703446;border-radius:3px;text-decoration:none;font:600 16px 'Figtree',sans-serif" style-hover="background:#703446;color:#fff">Reservar uma mesa</a>
+            </div>
+            <a href="#/eventos" style="margin-top:20px;display:inline-flex;align-items:center;gap:8px;min-height:44px;font:600 15.5px 'Figtree',sans-serif;color:#586044">Seu evento no Olivio <span aria-hidden="true">→</span></a>
+          </div>
+          <figure style="margin:0;position:relative">
+            <sc-if value="{{ heroFachada }}" hint-placeholder-val="{{ true }}"><img src="assets/olivio/fachada.jpg" alt="{{ hero.alt }}" width="1080" height="760" style="width:100%;height:auto;aspect-ratio:{{ hero.ratio }};object-fit:cover;object-position:{{ hero.pos }};border-radius:2px"></sc-if><sc-if value="{{ heroVaranda }}" hint-placeholder-val="{{ false }}"><img src="assets/olivio/varanda.jpg" alt="{{ hero.alt }}" width="1080" height="760" style="width:100%;height:auto;aspect-ratio:{{ hero.ratio }};object-fit:cover;object-position:{{ hero.pos }};border-radius:2px"></sc-if>
+            <sc-if value="{{ hero.marcar }}" hint-placeholder-val="{{ true }}">
+              <figcaption style="position:absolute;left:12px;bottom:12px;padding:5px 9px;background:rgba(247,241,231,0.94);color:#421D29;border-radius:2px;font:600 12px 'Figtree',sans-serif">Imagem provisória — substituir pelo arquivo original</figcaption>
+            </sc-if>
+          </figure>
+        </div>
+      </section>
+
+      <section id="experiencias" data-screen-label="Início — experiências" aria-labelledby="exp-t" style="padding:clamp(56px,8vw,104px) 0;border-top:1px solid #E2D7C5;scroll-margin-top:84px">
+        <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+          <p style="margin:0 0 10px;font:600 13.5px 'Figtree',sans-serif;letter-spacing:0.08em;color:#586044">EXPERIÊNCIAS OLIVIO</p>
+          <h2 id="exp-t" style="margin:0;font:600 clamp(36px,4.4vw,56px)/1.02 'Cormorant Garamond',serif;color:#421D29;max-width:16ch">Do almoço ao fim da noite</h2>
+          <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:48px 32px">
+            <sc-for list="{{ expList }}" as="e" hint-placeholder-count="3">
+              <article style="display:flex;flex-direction:column">
+                <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#EFE5D5;border-radius:2px">
+                  <sc-if value="{{ e.semFoto }}" hint-placeholder-val="{{ false }}"><image-slot id="noite-japonesa-card" shape="rect" placeholder="Foto original da noite japonesa — vertical 4:5"></image-slot></sc-if><sc-if value="{{ e.temFoto }}" hint-placeholder-val="{{ false }}"><img src="{{ e.img.src }}" alt="{{ e.img.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:{{ e.img.pos }}"></sc-if>
+                  <sc-if value="{{ e.img.marcar }}" hint-placeholder-val="{{ true }}">
+                    <span style="position:absolute;left:10px;bottom:10px;padding:4px 8px;background:rgba(247,241,231,0.94);color:#421D29;border-radius:2px;font:600 11.5px 'Figtree',sans-serif">Imagem provisória</span>
+                  </sc-if>
+                </div>
+                <p style="margin:18px 0 0;display:flex;align-items:center;gap:8px;font:600 13px 'Figtree',sans-serif;color:#586044"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#586044"></span>Experiência no restaurante</p>
+                <h3 style="margin:8px 0 0;font:600 34px/1.05 'Cormorant Garamond',serif;color:#421D29">{{ e.nome }}</h3>
+                <p style="margin:10px 0 0;font:400 16.5px/1.55 'Figtree',sans-serif;color:#302B28;text-wrap:pretty">{{ e.desc }}</p>
+                <dl style="margin:14px 0 0;padding:12px 0;border-top:1px solid #E2D7C5;border-bottom:1px solid #E2D7C5;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font:400 15px/1.4 'Figtree',sans-serif">
+                  <dt style="color:#5E554E">Quando</dt><dd style="margin:0;font-weight:600">{{ e.dias }}</dd>
+                  <dt style="color:#5E554E">Horário</dt><dd style="margin:0;font-weight:600">{{ e.horario }}</dd>
+                  <dt style="color:#5E554E">Cobrança</dt><dd style="margin:0;font-weight:600">{{ e.cobranca }}</dd>
+                </dl>
+                <a href="{{ e.href }}" style="margin-top:16px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:46px;font:600 15.5px 'Figtree',sans-serif;color:#703446">{{ e.acao }} <span aria-hidden="true">→</span></a>
+              </article>
+            </sc-for>
+          </div>
+          <div style="margin-top:56px;padding:22px 0;border-top:2px solid #421D29;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 32px">
+            <div>
+              <p style="margin:0;display:flex;align-items:center;gap:8px;font:600 13px 'Figtree',sans-serif;color:#703446"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#703446"></span>Disponível para pedido online</p>
+              <p style="margin:6px 0 0;font:400 16.5px/1.5 'Figtree',sans-serif;max-width:60ch">{{ onlineResumo }} Buffet e rodízio são servidos somente no restaurante.</p>
+            </div>
+            <a href="#/pedir" style="display:inline-flex;align-items:center;min-height:48px;padding:0 20px;background:#703446;color:#fff;border-radius:3px;text-decoration:none;font:600 15px 'Figtree',sans-serif" style-hover="background:#421D29;color:#fff">Pedir online</a>
+          </div>
+        </div>
+      </section>
+
+      <sc-if value="{{ hasDestaques }}" hint-placeholder-val="{{ true }}">
+        <section data-screen-label="Início — seleção do cardápio" aria-labelledby="sel-t" style="background:#fff;padding:clamp(56px,8vw,104px) 0">
+          <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 32px">
+              <div>
+                <p style="margin:0 0 10px;font:600 13.5px 'Figtree',sans-serif;letter-spacing:0.08em;color:#586044">PEÇA ONLINE</p>
+                <h2 id="sel-t" style="margin:0;font:600 clamp(36px,4.4vw,56px)/1.02 'Cormorant Garamond',serif;color:#421D29">Seleção do cardápio</h2>
+                <p style="margin:12px 0 0;font:400 16.5px/1.5 'Figtree',sans-serif;color:#5E554E">{{ modalidadesTxt }}</p>
+              </div>
+              <a href="#/pedir" style="display:inline-flex;align-items:center;min-height:46px;font:600 15.5px 'Figtree',sans-serif;color:#703446">Ver tudo para pedir →</a>
+            </div>
+            <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:40px 28px">
+              <sc-for list="{{ destaques }}" as="p" hint-placeholder-count="4">
+                <article style="display:flex;flex-direction:column">
+                  <div style="position:relative;aspect-ratio:4/3;background:#EFE5D5;border-radius:2px;overflow:hidden">
+                    <sc-if value="{{ p.temFoto }}" hint-placeholder-val="{{ false }}"><img src="{{ p.fotoSrc }}" alt="{{ p.fotoAlt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:{{ p.fotoPos }}"></sc-if><sc-if value="{{ p.semFoto }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ p.slot }}" shape="rect" placeholder="Foto original deste prato — 4:3"></image-slot></sc-if>
+                  </div>
+                  <sc-if value="{{ p.exemplo }}" hint-placeholder-val="{{ true }}">
+                    <span style="margin-top:12px;align-self:flex-start;padding:3px 8px;background:#F4E6C9;color:#4F3A12;border-radius:2px;font:600 12px 'Figtree',sans-serif">Exemplo — preço demonstrativo</span>
+                  </sc-if>
+                  <h3 style="margin:10px 0 0;font:600 25px/1.1 'Cormorant Garamond',serif;color:#421D29">{{ p.nome }}</h3>
+                  <p style="margin:6px 0 0;font:400 15px/1.5 'Figtree',sans-serif;color:#5E554E;flex:1">{{ p.descricao }}</p>
+                  <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                    <span style="font:600 17px 'Figtree',sans-serif;color:#302B28;font-variant-numeric:tabular-nums">{{ p.precoTxt }}</span>
+                    <button onClick="{{ p.open }}" disabled="{{ p.btnDisabled }}" aria-label="{{ p.btnAria }}" style="min-height:44px;padding:0 18px;background:{{ p.btnBg }};color:{{ p.btnFg }};border:0;border-radius:3px;font:600 14.5px 'Figtree',sans-serif;cursor:pointer" style-hover="filter:brightness(0.92)">{{ p.btnLabel }}</button>
+                  </div>
+                </article>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+
+      <section id="casa" data-screen-label="Início — a casa" aria-labelledby="casa-t" style="padding:clamp(56px,8vw,112px) 0;scroll-margin-top:84px">
+        <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,5vw,64px);align-items:end">
+          <figure style="margin:0;position:relative;grid-column:span 1">
+            <sc-if value="{{ heroFachada }}" hint-placeholder-val="{{ true }}"><img src="assets/olivio/varanda.jpg" alt="{{ casa.alt }}" loading="lazy" width="1104" height="660" style="width:100%;height:auto;aspect-ratio:{{ casa.ratio }};object-fit:cover;object-position:{{ casa.pos }};border-radius:2px"></sc-if><sc-if value="{{ heroVaranda }}" hint-placeholder-val="{{ false }}"><img src="assets/olivio/fachada.jpg" alt="{{ casa.alt }}" loading="lazy" width="1104" height="660" style="width:100%;height:auto;aspect-ratio:{{ casa.ratio }};object-fit:cover;object-position:{{ casa.pos }};border-radius:2px"></sc-if>
+            <sc-if value="{{ casa.marcar }}" hint-placeholder-val="{{ true }}">
+              <figcaption style="position:absolute;left:12px;bottom:12px;padding:5px 9px;background:rgba(247,241,231,0.94);color:#421D29;border-radius:2px;font:600 12px 'Figtree',sans-serif">Imagem provisória</figcaption>
+            </sc-if>
+          </figure>
+          <div>
+            <p style="margin:0 0 10px;font:600 13.5px 'Figtree',sans-serif;letter-spacing:0.08em;color:#586044">A CASA</p>
+            <h2 id="casa-t" style="margin:0;font:600 clamp(36px,4.4vw,56px)/1.02 'Cormorant Garamond',serif;color:#421D29;text-wrap:balance">Uma mesa para ficar mais um pouco</h2>
+            <p style="margin:20px 0 0;font:400 18px/1.65 'Figtree',sans-serif;max-width:46ch;text-wrap:pretty">Do almoço de todos os dias ao brinde do fim da tarde, o Olivio foi pensado para refeições sem pressa, boas conversas e encontros que pedem para continuar.</p>
+            <div style="margin-top:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+              <div style="position:relative;aspect-ratio:1/1;background:#EFE5D5;border-radius:2px;overflow:hidden">
+                <img src="assets/olivio/salao-mesa.jpg" alt="Mesa posta no salão do Olivio, com parede vinho e o nome da casa ao fundo" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%">
+              </div>
+              <div style="position:relative;aspect-ratio:1/1;background:#EFE5D5;border-radius:2px;overflow:hidden">
+                <img src="assets/olivio/mesa-servida.jpg" alt="Mesa de madeira com gratinados, carne fatiada, flores e o cardápio do Olivio" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 45%">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-screen-label="Início — eventos" aria-labelledby="evb-t" style="background:#421D29;color:#F7F1E7">
+        <div style="max-width:1280px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:36px clamp(32px,6vw,96px);align-items:center">
+          <div>
+            <svg width="72" height="22" viewBox="0 0 72 22" aria-hidden="true" style="display:block;margin-bottom:18px"><path d="M4 15 C 22 13, 46 12, 68 8" stroke="#B69A6A" stroke-width="1.2" fill="none"></path><ellipse cx="18" cy="9.5" rx="6.5" ry="2.3" transform="rotate(-22 18 9.5)" fill="#B69A6A"></ellipse><ellipse cx="30" cy="17.5" rx="6.5" ry="2.3" transform="rotate(18 30 17.5)" fill="#B69A6A"></ellipse><ellipse cx="42" cy="7.5" rx="6.5" ry="2.3" transform="rotate(-24 42 7.5)" fill="#B69A6A"></ellipse></svg>
+            <h2 id="evb-t" style="margin:0;font:600 clamp(38px,4.8vw,62px)/1.0 'Cormorant Garamond',serif;color:#fff;text-wrap:balance">Seu próximo encontro pode ser aqui.</h2>
+            <p style="margin:20px 0 0;font:400 18px/1.6 'Figtree',sans-serif;color:#F1E6EA;max-width:46ch">Conte o que você está planejando e consulte as possibilidades para celebrar no Olivio.</p>
+            <a href="#/eventos" style="margin-top:28px;display:inline-flex;align-items:center;min-height:52px;padding:0 24px;background:#F7F1E7;color:#421D29;border-radius:3px;text-decoration:none;font:600 16px 'Figtree',sans-serif" style-hover="background:#fff;color:#703446">Planejar meu evento</a>
+          </div>
+          <div>
+            <p style="margin:0 0 8px;font:600 13.5px 'Figtree',sans-serif;color:#E6D6B6">Ocasiões para consulta</p>
+            <ul style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(247,241,231,0.25)">
+              <li style="padding:18px 0;border-bottom:1px solid rgba(247,241,231,0.25);font:600 28px 'Cormorant Garamond',serif;color:#fff">Aniversários</li>
+              <li style="padding:18px 0;border-bottom:1px solid rgba(247,241,231,0.25);font:600 28px 'Cormorant Garamond',serif;color:#fff">Confraternizações</li>
+              <li style="padding:18px 0;border-bottom:1px solid rgba(247,241,231,0.25);font:600 28px 'Cormorant Garamond',serif;color:#fff">Encontros empresariais</li>
+            </ul>
+            <p style="margin:14px 0 0;font:400 14.5px/1.5 'Figtree',sans-serif;color:#E9DCE0">Formato, estrutura e valores são definidos com a equipe para cada solicitação.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="localizacao" data-screen-label="Início — localização e horários" aria-labelledby="loc-t" style="padding:clamp(56px,8vw,104px) 0;scroll-margin-top:84px">
+        <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:40px clamp(32px,6vw,96px)">
+          <div>
+            <p style="margin:0 0 10px;font:600 13.5px 'Figtree',sans-serif;letter-spacing:0.08em;color:#586044">LOCALIZAÇÃO</p>
+            <h2 id="loc-t" style="margin:0;font:600 clamp(36px,4.4vw,56px)/1.02 'Cormorant Garamond',serif;color:#421D29">Venha nos visitar</h2>
+            <address style="margin:22px 0 0;font:500 19px/1.5 'Figtree',sans-serif;font-style:normal">{{ c.endereco }}</address>
+            <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:10px">
+              <a href="{{ c.mapsUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:50px;padding:0 22px;background:#703446;color:#fff;border-radius:3px;text-decoration:none;font:600 15.5px 'Figtree',sans-serif" style-hover="background:#421D29;color:#fff">Como chegar ↗</a>
+              <a href="{{ telHref }}" style="display:inline-flex;align-items:center;min-height:50px;padding:0 22px;border:1.5px solid #703446;color:#703446;border-radius:3px;text-decoration:none;font:600 15.5px 'Figtree',sans-serif" style-hover="background:#703446;color:#fff">Ligar {{ c.telefone }}</a>
+            </div>
+            <a href="{{ instaUrl }}" target="_blank" rel="noopener" style="margin-top:14px;display:inline-flex;align-items:center;min-height:44px;font:600 15.5px 'Figtree',sans-serif">Instagram @{{ c.instagram }} ↗</a>
+            <div style="margin-top:28px;padding-top:18px;border-top:1px solid #E2D7C5">
+              <p style="margin:0;font:600 15px 'Figtree',sans-serif">Vales-refeição divulgados</p>
+              <p style="margin:6px 0 0;font:400 15.5px/1.55 'Figtree',sans-serif;color:#5E554E">{{ valesTxt }} — aceitação no salão conforme divulgação. Para retirada e entrega, confirme com a equipe.</p>
+            </div>
+          </div>
+          <div>
+            <h3 style="margin:6px 0 16px;font:600 30px 'Cormorant Garamond',serif;color:#421D29">Horários</h3>
+            <dl style="margin:0;border-top:2px solid #421D29">
+              <sc-for list="{{ horariosList }}" as="h" hint-placeholder-count="5">
+                <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:4px 16px;padding:15px 0;border-bottom:1px solid #E2D7C5">
+                  <dt style="font:600 16.5px 'Figtree',sans-serif;color:#302B28">{{ h.nome }}<span style="display:block;margin-top:2px;font:400 14.5px 'Figtree',sans-serif;color:#5E554E">{{ h.dias }}</span></dt>
+                  <dd style="margin:0;font:600 16px 'Figtree',sans-serif;color:{{ h.cor }};text-align:right">{{ h.horario }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+            <p style="margin:14px 0 0;font:400 14px/1.5 'Figtree',sans-serif;color:#5E554E">Horários conforme os materiais de divulgação, sujeitos a alteração em feriados e datas especiais.</p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= CARDÁPIO DA CASA / PEDIR ONLINE ================= -->
+    <sc-if value="{{ isMenuArea }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="{{ menuScreenLabel }}" aria-labelledby="menu-t" style="padding:clamp(36px,6vw,72px) 0 clamp(56px,8vw,96px)">
+        <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+          <h1 id="menu-t" style="margin:0;font:600 clamp(42px,5.4vw,70px)/1 'Cormorant Garamond',serif;color:#421D29">{{ menuTitle }}</h1>
+          <div role="tablist" aria-label="Visualização do cardápio" style="margin-top:24px;display:inline-flex;border:1.5px solid #703446;border-radius:3px;overflow:hidden">
+            <a href="#/cardapio" role="tab" aria-selected="{{ tabCasaSel }}" style="white-space:nowrap;display:flex;align-items:center;min-height:46px;padding:0 18px;text-decoration:none;font:600 15px 'Figtree',sans-serif;background:{{ tabCasaBg }};color:{{ tabCasaFg }}">Cardápio da casa</a>
+            <a href="#/pedir" role="tab" aria-selected="{{ tabPedirSel }}" style="white-space:nowrap;display:flex;align-items:center;min-height:46px;padding:0 18px;text-decoration:none;font:600 15px 'Figtree',sans-serif;background:{{ tabPedirBg }};color:{{ tabPedirFg }}">Pedir online</a>
+          </div>
+          <p style="margin:16px 0 0;font:400 16.5px/1.55 'Figtree',sans-serif;color:#5E554E;max-width:66ch">{{ menuIntro }}</p>
+
+          <div role="search" style="margin-top:28px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;flex-direction:column;gap:6px;max-width:520px">
+              <label for="busca" style="font:600 14px 'Figtree',sans-serif">Buscar no cardápio</label>
+              <input id="busca" type="search" value="{{ q }}" onChange="{{ onQ }}" placeholder="Nome do prato ou bebida" style="min-height:50px;padding:0 16px;border:1.5px solid #B8AC9C;border-radius:3px;background:#fff;color:#302B28;font:400 16px 'Figtree',sans-serif">
+            </div>
+            <div role="group" aria-label="Categorias" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px">
+              <sc-for list="{{ catChips }}" as="ch" hint-placeholder-count="5">
+                <button onClick="{{ ch.pick }}" aria-pressed="{{ ch.pressed }}" style="flex:none;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid #703446;background:{{ ch.bg }};color:{{ ch.fg }};font:600 14.5px 'Figtree',sans-serif;cursor:pointer">{{ ch.l }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <p aria-live="polite" style="margin:18px 0 0;font:600 14.5px 'Figtree',sans-serif;color:#302B28">{{ menuResultsTxt }}</p>
+
+          <!-- Cardápio da casa -->
+          <sc-if value="{{ isCardapio }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <sc-for list="{{ cardSections }}" as="sec" hint-placeholder-count="3">
+                <section aria-label="{{ sec.nome }}" style="margin-top:40px">
+                  <h2 style="margin:0;padding-bottom:10px;border-bottom:2px solid #421D29;font:600 34px 'Cormorant Garamond',serif;color:#421D29">{{ sec.nome }}</h2>
+                  <ul style="list-style:none;margin:0;padding:0">
+                    <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="2">
+                      <li style="display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px 20px;align-items:start;padding:18px 0;border-bottom:1px solid #E2D7C5">
+                        <div style="position:relative;width:96px;height:96px;background:#EFE5D5;border-radius:2px;overflow:hidden">
+                          <sc-if value="{{ it.temFoto }}" hint-placeholder-val="{{ false }}"><img src="{{ it.fotoSrc }}" alt="{{ it.fotoAlt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:{{ it.fotoPos }}"></sc-if><sc-if value="{{ it.semFoto }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ it.slot }}" shape="rect" placeholder="Foto"></image-slot></sc-if>
+                        </div>
+                        <div style="min-width:0">
+                          <h3 style="margin:0;font:600 24px/1.1 'Cormorant Garamond',serif;color:#421D29">{{ it.nome }}</h3>
+                          <p style="margin:5px 0 0;font:400 15px/1.5 'Figtree',sans-serif;color:#5E554E">{{ it.descricao }}</p>
+                          <ul aria-label="Disponibilidade" style="list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px">
+                            <sc-for list="{{ it.tags }}" as="tg" hint-placeholder-count="2">
+                              <li style="padding:3px 8px;border:1px solid {{ tg.bd }};color:{{ tg.fg }};border-radius:2px;font:600 12px 'Figtree',sans-serif">{{ tg.t }}</li>
+                            </sc-for>
+                          </ul>
+                        </div>
+                        <div style="text-align:right;font:600 16.5px 'Figtree',sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ it.precoTxt }}<span style="display:block;font:400 13px 'Figtree',sans-serif;color:#5E554E">{{ it.unidadeTxt }}</span></div>
+                      </li>
+                    </sc-for>
+                  </ul>
+                </section>
+              </sc-for>
+
+              <section aria-labelledby="salao-t" style="margin-top:56px;padding:28px clamp(18px,3vw,32px);background:#fff;border-top:3px solid #586044">
+                <h2 id="salao-t" style="margin:0;font:600 32px 'Cormorant Garamond',serif;color:#421D29">Somente no restaurante</h2>
+                <p style="margin:6px 0 0;font:400 15px/1.5 'Figtree',sans-serif;color:#5E554E">Experiências de consumo no salão. Não estão disponíveis para pedido online.</p>
+                <ul style="list-style:none;margin:16px 0 0;padding:0">
+                  <sc-for list="{{ noSalao }}" as="s" hint-placeholder-count="3">
+                    <li style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;padding:14px 0;border-bottom:1px solid #E2D7C5">
+                      <div style="min-width:0;flex:1 1 260px">
+                        <p style="margin:0;font:600 17px 'Figtree',sans-serif">{{ s.nome }}</p>
+                        <p style="margin:3px 0 0;font:400 14.5px/1.45 'Figtree',sans-serif;color:#5E554E">{{ s.nota }}</p>
+                      </div>
+                      <p style="margin:0;font:600 17px 'Figtree',sans-serif;font-variant-numeric:tabular-nums">{{ s.precoTxt }} <span style="font:400 14px 'Figtree',sans-serif;color:#5E554E">{{ s.unidadeTxt }}</span></p>
+                    </li>
+                  </sc-for>
+                </ul>
+              </section>
+            </div>
+          </sc-if>
+
+          <!-- Pedir online -->
+          <sc-if value="{{ isPedir }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:40px 28px">
+              <sc-for list="{{ pedirList }}" as="p" hint-placeholder-count="4">
+                <article style="display:flex;flex-direction:column;opacity:{{ p.opacity }}">
+                  <div style="position:relative;aspect-ratio:4/3;background:#EFE5D5;border-radius:2px;overflow:hidden">
+                    <sc-if value="{{ p.temFoto }}" hint-placeholder-val="{{ false }}"><img src="{{ p.fotoSrc }}" alt="{{ p.fotoAlt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:{{ p.fotoPos }}"></sc-if><sc-if value="{{ p.semFoto }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ p.slot }}" shape="rect" placeholder="Foto original deste prato — 4:3"></image-slot></sc-if>
+                  </div>
+                  <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+                    <span style="padding:3px 8px;border:1px solid #C9BBA6;border-radius:2px;font:600 12px 'Figtree',sans-serif;color:#5E554E">{{ p.catNome }}</span>
+                    <sc-if value="{{ p.exemplo }}" hint-placeholder-val="{{ true }}"><span style="padding:3px 8px;background:#F4E6C9;color:#4F3A12;border-radius:2px;font:600 12px 'Figtree',sans-serif">Exemplo — preço demonstrativo</span></sc-if>
+                    <sc-if value="{{ p.indisponivel }}" hint-placeholder-val="{{ false }}"><span style="padding:3px 8px;background:#302B28;color:#fff;border-radius:2px;font:600 12px 'Figtree',sans-serif">Indisponível no momento</span></sc-if>
+                  </div>
+                  <h2 style="margin:10px 0 0;font:600 25px/1.1 'Cormorant Garamond',serif;color:#421D29">{{ p.nome }}</h2>
+                  <p style="margin:6px 0 0;font:400 15px/1.5 'Figtree',sans-serif;color:#5E554E;flex:1">{{ p.descricao }}</p>
+                  <p style="margin:8px 0 0;font:500 13px 'Figtree',sans-serif;color:#586044">{{ p.disponivelTxt }}</p>
+                  <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                    <span style="font:600 17px 'Figtree',sans-serif;font-variant-numeric:tabular-nums">{{ p.precoTxt }}</span>
+                    <button onClick="{{ p.open }}" disabled="{{ p.btnDisabled }}" aria-label="{{ p.btnAria }}" style="min-height:44px;padding:0 18px;background:{{ p.btnBg }};color:{{ p.btnFg }};border:0;border-radius:3px;font:600 14.5px 'Figtree',sans-serif;cursor:{{ p.cursor }}">{{ p.btnLabel }}</button>
+                  </div>
+                </article>
+              </sc-for>
+            </div>
+            <p style="margin:40px 0 0;font:400 14.5px/1.55 'Figtree',sans-serif;color:#5E554E;max-width:70ch">Bebidas alcoólicas não estão disponíveis para pedido online. Informações sobre ingredientes e alergênicos devem ser confirmadas com a equipe.</p>
+          </sc-if>
+
+          <sc-if value="{{ menuEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:48px 0;max-width:520px">
+              <h2 style="margin:0;font:600 32px 'Cormorant Garamond',serif;color:#421D29">{{ menuEmptyTitle }}</h2>
+              <p style="margin:8px 0 18px;font:400 16.5px/1.55 'Figtree',sans-serif;color:#5E554E">{{ menuEmptyText }}</p>
+              <button onClick="{{ clearMenuFilters }}" style="min-height:46px;padding:0 18px;background:#703446;color:#fff;border:0;border-radius:3px;font:600 15px 'Figtree',sans-serif;cursor:pointer">Limpar busca</button>
+            </div>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= SACOLA ================= -->
+    <sc-if value="{{ isSacola }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Sacola" aria-labelledby="sac-t" style="padding:clamp(36px,6vw,72px) 0 clamp(56px,8vw,96px)">
+        <div style="max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+          <h1 id="sac-t" style="margin:0;font:600 clamp(42px,5.4vw,66px)/1 'Cormorant Garamond',serif;color:#421D29">Sua sacola</h1>
+
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:36px 0;max-width:520px">
+              <p style="margin:0 0 18px;font:400 18px/1.55 'Figtree',sans-serif">Sua sacola está vazia. Escolha itens disponíveis para pedido online.</p>
+              <a href="#/pedir" style="display:inline-flex;align-items:center;min-height:50px;padding:0 22px;background:#703446;color:#fff;border-radius:3px;text-decoration:none;font:600 15.5px 'Figtree',sans-serif">Ver itens para pedir</a>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:40px clamp(28px,5vw,64px);align-items:start">
+              <div>
+                <ul style="list-style:none;margin:0;padding:0;border-top:2px solid #421D29">
+                  <sc-for list="{{ lines }}" as="l" hint-placeholder-count="2">
+                    <li style="padding:18px 0;border-bottom:1px solid #E2D7C5">
+                      <div style="display:flex;justify-content:space-between;gap:16px">
+                        <div style="min-width:0">
+                          <p style="margin:0;font:600 24px/1.1 'Cormorant Garamond',serif;color:#421D29">{{ l.nome }}</p>
+                          <ul style="margin:6px 0 0;padding:0 0 0 16px;font:400 14.5px/1.5 'Figtree',sans-serif;color:#5E554E">
+                            <sc-for list="{{ l.opts }}" as="o" hint-placeholder-count="1"><li>{{ o }}</li></sc-for>
+                          </ul>
+                          <sc-if value="{{ l.temObs }}" hint-placeholder-val="{{ false }}"><p style="margin:6px 0 0;font:400 14.5px/1.5 'Figtree',sans-serif;color:#5E554E">Observação: {{ l.obs }}</p></sc-if>
+                          <sc-if value="{{ l.aviso }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:8px 0 0;font:600 14px/1.45 'Figtree',sans-serif;color:#A3262A">{{ l.avisoTxt }}</p></sc-if>
+                        </div>
+                        <p style="margin:0;font:600 16.5px 'Figtree',sans-serif;white-space:nowrap;font-variant-numeric:tabular-nums">{{ l.totalTxt }}</p>
+                      </div>
+                      <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                        <div role="group" aria-label="{{ l.qtyAria }}" style="display:flex;align-items:center;border:1.5px solid #B8AC9C;border-radius:3px">
+                          <button onClick="{{ l.dec }}" aria-label="Diminuir quantidade" style="width:44px;height:44px;background:none;border:0;font:600 20px 'Figtree',sans-serif;color:#421D29;cursor:pointer">−</button>
+                          <span aria-live="polite" style="min-width:32px;text-align:center;font:600 16px 'Figtree',sans-serif">{{ l.qty }}</span>
+                          <button onClick="{{ l.inc }}" aria-label="Aumentar quantidade" style="width:44px;height:44px;background:none;border:0;font:600 20px 'Figtree',sans-serif;color:#421D29;cursor:pointer">+</button>
+                        </div>
+                        <button onClick="{{ l.remove }}" style="min-height:44px;padding:0 6px;background:none;border:0;color:#703446;font:600 14.5px 'Figtree',sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Remover</button>
+                      </div>
+                    </li>
+                  </sc-for>
+                </ul>
+                <div style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px">
+                  <a href="#/pedir" style="display:inline-flex;align-items:center;min-height:44px;font:600 15px 'Figtree',sans-serif">← Continuar escolhendo</a>
+                  <button onClick="{{ clearCart }}" style="min-height:44px;padding:0;background:none;border:0;color:#5E554E;font:500 14.5px 'Figtree',sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Esvaziar sacola</button>
+                </div>
+              </div>
+
+              <div id="checkout" tabindex="-1" style="outline:none;background:#fff;padding:clamp(20px,3vw,32px);border-top:3px solid #703446">
+                <sc-if value="{{ ckFormStep }}" hint-placeholder-val="{{ true }}">
+                  <form onSubmit="{{ submitOrder }}" novalidate="" aria-label="Finalizar pedido">
+                    <h2 style="margin:0 0 16px;font:600 30px 'Cormorant Garamond',serif;color:#421D29">Finalizar pedido</h2>
+                    <sc-if value="{{ ckHasErrors }}" hint-placeholder-val="{{ false }}">
+                      <div role="alert" style="margin:0 0 18px;padding:12px 14px;border:2px solid #A3262A;border-radius:3px;background:#FBEDED;color:#6E1518;font:500 14.5px/1.5 'Figtree',sans-serif">Revise os campos indicados antes de continuar.</div>
+                    </sc-if>
+                    <fieldset style="margin:0;padding:0;border:0">
+                      <legend style="padding:0;font:600 15px 'Figtree',sans-serif">Modalidade *</legend>
+                      <div style="margin-top:8px;display:flex;flex-direction:column;gap:8px">
+                        <sc-for list="{{ modOpts }}" as="m" hint-placeholder-count="1">
+                          <label style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1.5px solid {{ m.bd }};border-radius:3px;cursor:pointer;min-height:52px">
+                            <input type="radio" name="modalidade" value="{{ m.v }}" checked="{{ m.checked }}" onChange="{{ m.pick }}" style="width:20px;height:20px;margin:1px 0 0;accent-color:#703446;flex:none">
+                            <span><span style="display:block;font:600 15.5px 'Figtree',sans-serif">{{ m.l }}</span><span style="display:block;margin-top:2px;font:400 14px/1.45 'Figtree',sans-serif;color:#5E554E">{{ m.d }}</span></span>
+                          </label>
+                        </sc-for>
+                      </div>
+                    </fieldset>
+                    <sc-if value="{{ entregaIndisponivelMsg }}" hint-placeholder-val="{{ true }}">
+                      <p style="margin:10px 0 0;font:400 14px/1.5 'Figtree',sans-serif;color:#5E554E">Entrega ainda não disponível. A operação será anunciada após confirmação de bairros, taxas e prazos.</p>
+                    </sc-if>
+
+                    <div style="margin-top:20px;display:flex;flex-direction:column;gap:18px">
+                      <div style="display:flex;flex-direction:column;gap:6px">
+                        <label for="ck-nome" style="font:600 15px 'Figtree',sans-serif">Nome *</label>
+                        <input id="ck-nome" type="text" autocomplete="name" value="{{ ck.nome.v }}" onChange="{{ ck.nome.on }}" aria-invalid="{{ ck.nome.inv }}" aria-describedby="ck-nome-e" style="min-height:50px;padding:0 14px;border:1.5px solid {{ ck.nome.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                        <span id="ck-nome-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ck.nome.err }}</span>
+                      </div>
+                      <div style="display:flex;flex-direction:column;gap:6px">
+                        <label for="ck-contato" style="font:600 15px 'Figtree',sans-serif">Telefone para contato *</label>
+                        <input id="ck-contato" type="tel" autocomplete="tel" inputmode="tel" value="{{ ck.contato.v }}" onChange="{{ ck.contato.on }}" aria-invalid="{{ ck.contato.inv }}" aria-describedby="ck-contato-e" placeholder="(16) 90000-0000" style="min-height:50px;padding:0 14px;border:1.5px solid {{ ck.contato.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                        <span id="ck-contato-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ck.contato.err }}</span>
+                      </div>
+                      <sc-if value="{{ isEntrega }}" hint-placeholder-val="{{ false }}">
+                        <fieldset style="margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:14px">
+                          <legend style="padding:0 0 4px;font:600 15px 'Figtree',sans-serif">Endereço de entrega</legend>
+                          <div style="display:flex;flex-direction:column;gap:6px">
+                            <label for="ck-bairro" style="font:600 14.5px 'Figtree',sans-serif">Bairro *</label>
+                            <select id="ck-bairro" value="{{ ck.bairro.v }}" onChange="{{ ck.bairro.on }}" aria-invalid="{{ ck.bairro.inv }}" aria-describedby="ck-bairro-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ ck.bairro.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                              <sc-for list="{{ bairroOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+                            </select>
+                            <span id="ck-bairro-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ck.bairro.err }}</span>
+                          </div>
+                          <div style="display:flex;flex-direction:column;gap:6px">
+                            <label for="ck-rua" style="font:600 14.5px 'Figtree',sans-serif">Rua e número *</label>
+                            <input id="ck-rua" type="text" autocomplete="street-address" value="{{ ck.rua.v }}" onChange="{{ ck.rua.on }}" aria-invalid="{{ ck.rua.inv }}" aria-describedby="ck-rua-e" style="min-height:50px;padding:0 14px;border:1.5px solid {{ ck.rua.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                            <span id="ck-rua-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ck.rua.err }}</span>
+                          </div>
+                          <div style="display:flex;flex-direction:column;gap:6px">
+                            <label for="ck-comp" style="font:600 14.5px 'Figtree',sans-serif">Complemento e referência <span style="font-weight:400;color:#5E554E">(opcional)</span></label>
+                            <input id="ck-comp" type="text" value="{{ ck.complemento.v }}" onChange="{{ ck.complemento.on }}" style="min-height:50px;padding:0 14px;border:1.5px solid #B8AC9C;border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                          </div>
+                        </fieldset>
+                      </sc-if>
+                      <div style="display:flex;flex-direction:column;gap:6px">
+                        <label for="ck-obs" style="font:600 15px 'Figtree',sans-serif">Observação geral <span style="font-weight:400;color:#5E554E">(opcional)</span></label>
+                        <textarea id="ck-obs" rows="2" maxlength="200" value="{{ ck.obsGeral.v }}" onChange="{{ ck.obsGeral.on }}" style="padding:10px 14px;border:1.5px solid #B8AC9C;border-radius:3px;background:#fff;font:400 16px/1.5 'Figtree',sans-serif;color:#302B28;resize:vertical"></textarea>
+                      </div>
+                    </div>
+
+                    <dl style="margin:24px 0 0;padding-top:14px;border-top:1px solid #E2D7C5;display:grid;grid-template-columns:1fr auto;gap:8px 16px;font:400 15.5px 'Figtree',sans-serif;font-variant-numeric:tabular-nums">
+                      <dt>Subtotal</dt><dd style="margin:0;font-weight:600;text-align:right">{{ subtotalTxt }}</dd>
+                      <sc-if value="{{ isEntrega }}" hint-placeholder-val="{{ false }}"><dt>Taxa de entrega</dt></sc-if>
+                      <sc-if value="{{ isEntrega }}" hint-placeholder-val="{{ false }}"><dd style="margin:0;font-weight:600;text-align:right">{{ taxaTxt }}</dd></sc-if>
+                      <dt style="font-weight:700;font-size:17px">Total</dt><dd style="margin:0;font-weight:700;font-size:17px;text-align:right">{{ totalTxt }}</dd>
+                    </dl>
+                    <p style="margin:10px 0 0;font:400 14px/1.5 'Figtree',sans-serif;color:#5E554E">{{ pagamentoTxt }}</p>
+
+                    <button type="submit" style="margin-top:20px;width:100%;min-height:54px;background:#703446;color:#fff;border:0;border-radius:3px;font:600 16.5px 'Figtree',sans-serif;cursor:pointer" style-hover="background:#421D29">Enviar pedido pelo WhatsApp</button>
+                    <p style="margin:10px 0 0;font:400 13.5px/1.5 'Figtree',sans-serif;color:#5E554E">Abrir a conversa não confirma o recebimento nem a aceitação do pedido. A equipe responderá pelo WhatsApp. Seus dados de contato não ficam salvos neste navegador.</p>
+                  </form>
+                </sc-if>
+
+                <sc-if value="{{ ckPreviewStep }}" hint-placeholder-val="{{ false }}">
+                  <div>
+                    <h2 style="margin:0 0 12px;font:600 30px 'Cormorant Garamond',serif;color:#421D29">Mensagem do pedido</h2>
+                    <sc-if value="{{ waOff }}" hint-placeholder-val="{{ true }}">
+                      <p role="status" style="margin:0 0 14px;padding:12px 14px;background:#F4E6C9;color:#4F3A12;border-radius:3px;font:500 14.5px/1.5 'Figtree',sans-serif">WhatsApp ainda não configurado. Esta é uma prévia da mensagem — nada foi enviado.</p>
+                    </sc-if>
+                    <pre style="margin:0;padding:16px;background:#F7F1E7;border:1px solid #E2D7C5;border-radius:3px;font:400 14.5px/1.55 'Figtree',sans-serif;white-space:pre-wrap;overflow-wrap:anywhere;color:#302B28">{{ orderMsg }}</pre>
+                    <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px">
+                      <sc-if value="{{ waOn }}" hint-placeholder-val="{{ false }}">
+                        <a href="{{ orderWaHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:50px;padding:0 20px;background:#586044;color:#fff;border-radius:3px;text-decoration:none;font:600 15.5px 'Figtree',sans-serif">Abrir conversa no WhatsApp ↗</a>
+                      </sc-if>
+                      <button onClick="{{ copyOrder }}" style="min-height:50px;padding:0 18px;background:#fff;color:#421D29;border:1.5px solid #421D29;border-radius:3px;font:600 15px 'Figtree',sans-serif;cursor:pointer">Copiar mensagem</button>
+                      <button onClick="{{ editOrder }}" style="min-height:50px;padding:0 12px;background:none;border:0;color:#703446;font:600 15px 'Figtree',sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Voltar e editar</button>
+                    </div>
+                    <p style="margin:14px 0 0;font:400 13.5px/1.5 'Figtree',sans-serif;color:#5E554E">Abrir a conversa não confirma o recebimento nem a aceitação do pedido. Pagamento é combinado com a equipe; não há pagamento online nesta versão.</p>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= RESERVAR ================= -->
+    <sc-if value="{{ isReservar }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Reservar mesa" aria-labelledby="rv-t" style="padding:clamp(36px,6vw,72px) 0 clamp(56px,8vw,96px)">
+        <div style="max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px clamp(28px,5vw,72px);align-items:start">
+          <div>
+            <h1 id="rv-t" style="margin:0;font:600 clamp(42px,5.4vw,66px)/1 'Cormorant Garamond',serif;color:#421D29">Reservar uma mesa</h1>
+            <p style="margin:16px 0 0;font:400 17.5px/1.6 'Figtree',sans-serif;max-width:44ch">Escolha a experiência, a data e o horário preferido. A equipe confirmará a disponibilidade e os detalhes da sua reserva.</p>
+            <dl style="margin:28px 0 0;border-top:2px solid #421D29">
+              <sc-for list="{{ rvRegras }}" as="r" hint-placeholder-count="3">
+                <div style="padding:13px 0;border-bottom:1px solid #E2D7C5">
+                  <dt style="font:600 16px 'Figtree',sans-serif">{{ r.nome }}</dt>
+                  <dd style="margin:3px 0 0;font:400 15px/1.45 'Figtree',sans-serif;color:#5E554E">{{ r.txt }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+            <p style="margin:16px 0 0;font:400 14.5px/1.55 'Figtree',sans-serif;color:#5E554E">Grupos acima de {{ rvMaxPessoas }} pessoas: <a href="#/eventos">solicite pelo formulário de eventos</a>.</p>
+          </div>
+
+          <div id="rv-area" tabindex="-1" style="outline:none;background:#fff;padding:clamp(20px,3vw,32px);border-top:3px solid #703446">
+            <sc-if value="{{ rvFormStep }}" hint-placeholder-val="{{ true }}">
+              <form onSubmit="{{ submitRv }}" novalidate="" aria-label="Solicitação de reserva">
+                <sc-if value="{{ rvHasErrors }}" hint-placeholder-val="{{ false }}">
+                  <div role="alert" style="margin:0 0 18px;padding:12px 14px;border:2px solid #A3262A;border-radius:3px;background:#FBEDED;color:#6E1518;font:500 14.5px/1.5 'Figtree',sans-serif">Revise os campos indicados.</div>
+                </sc-if>
+                <fieldset style="margin:0;padding:0;border:0">
+                  <legend style="padding:0;font:600 15px 'Figtree',sans-serif">Experiência desejada *</legend>
+                  <div style="margin-top:8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px">
+                    <sc-for list="{{ expOpts }}" as="x" hint-placeholder-count="4">
+                      <label style="display:flex;align-items:center;gap:10px;padding:0 12px;min-height:50px;border:1.5px solid {{ x.bd }};background:{{ x.bg }};border-radius:3px;cursor:pointer;font:600 15px 'Figtree',sans-serif">
+                        <input type="radio" name="rv-exp" value="{{ x.id }}" checked="{{ x.checked }}" onChange="{{ x.pick }}" style="width:19px;height:19px;margin:0;accent-color:#703446;flex:none">{{ x.nome }}
+                      </label>
+                    </sc-for>
+                  </div>
+                  <span style="display:block;margin-top:6px;font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ rv.exp.err }}</span>
+                </fieldset>
+                <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:16px">
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <label for="rv-data" style="font:600 15px 'Figtree',sans-serif">Data desejada *</label>
+                    <input id="rv-data" type="date" min="{{ dateMin }}" max="{{ dateMax }}" value="{{ rv.data.v }}" onChange="{{ rv.data.on }}" aria-invalid="{{ rv.data.inv }}" aria-describedby="rv-data-h rv-data-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ rv.data.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                    <span id="rv-data-h" style="font:400 13.5px/1.4 'Figtree',sans-serif;color:#5E554E">{{ diasTxt }}</span>
+                    <span id="rv-data-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ rv.data.err }}</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <label for="rv-hora" style="font:600 15px 'Figtree',sans-serif">Horário preferido *</label>
+                    <select id="rv-hora" value="{{ rv.hora.v }}" onChange="{{ rv.hora.on }}" aria-invalid="{{ rv.hora.inv }}" aria-describedby="rv-hora-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ rv.hora.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                      <sc-for list="{{ horaOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+                    </select>
+                    <span id="rv-hora-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ rv.hora.err }}</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <label for="rv-pessoas" style="font:600 15px 'Figtree',sans-serif">Pessoas *</label>
+                    <input id="rv-pessoas" type="number" inputmode="numeric" min="{{ rvMinPessoas }}" max="{{ rvMaxPessoas }}" value="{{ rv.pessoas.v }}" onChange="{{ rv.pessoas.on }}" aria-invalid="{{ rv.pessoas.inv }}" aria-describedby="rv-pessoas-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ rv.pessoas.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                    <span id="rv-pessoas-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ rv.pessoas.err }}</span>
+                  </div>
+                </div>
+                <div style="margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <label for="rv-nome" style="font:600 15px 'Figtree',sans-serif">Nome *</label>
+                    <input id="rv-nome" type="text" autocomplete="name" value="{{ rv.nome.v }}" onChange="{{ rv.nome.on }}" aria-invalid="{{ rv.nome.inv }}" aria-describedby="rv-nome-e" style="min-height:50px;padding:0 14px;border:1.5px solid {{ rv.nome.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                    <span id="rv-nome-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ rv.nome.err }}</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <label for="rv-contato" style="font:600 15px 'Figtree',sans-serif">Telefone ou e-mail *</label>
+                    <input id="rv-contato" type="text" autocomplete="tel" value="{{ rv.contato.v }}" onChange="{{ rv.contato.on }}" aria-invalid="{{ rv.contato.inv }}" aria-describedby="rv-contato-e" style="min-height:50px;padding:0 14px;border:1.5px solid {{ rv.contato.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                    <span id="rv-contato-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ rv.contato.err }}</span>
+                  </div>
+                </div>
+                <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px">
+                  <label for="rv-obs" style="font:600 15px 'Figtree',sans-serif">Observação <span style="font-weight:400;color:#5E554E">(opcional)</span></label>
+                  <textarea id="rv-obs" rows="3" maxlength="300" value="{{ rv.obs.v }}" onChange="{{ rv.obs.on }}" style="padding:10px 14px;border:1.5px solid #B8AC9C;border-radius:3px;background:#fff;font:400 16px/1.5 'Figtree',sans-serif;color:#302B28;resize:vertical"></textarea>
+                </div>
+                <button type="submit" style="margin-top:22px;width:100%;min-height:54px;background:#703446;color:#fff;border:0;border-radius:3px;font:600 16.5px 'Figtree',sans-serif;cursor:pointer" style-hover="background:#421D29">Solicitar reserva</button>
+                <p style="margin:10px 0 0;font:400 13.5px/1.5 'Figtree',sans-serif;color:#5E554E">A solicitação não garante a mesa. A equipe confirmará a disponibilidade e os detalhes da sua reserva.</p>
+              </form>
+            </sc-if>
+            <sc-if value="{{ rvPreviewStep }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <h2 style="margin:0 0 10px;font:600 30px 'Cormorant Garamond',serif;color:#421D29">Sua solicitação de reserva</h2>
+                <p style="margin:0 0 14px;font:500 16px/1.5 'Figtree',sans-serif">A equipe confirmará a disponibilidade e os detalhes da sua reserva.</p>
+                <sc-if value="{{ waOff }}" hint-placeholder-val="{{ true }}">
+                  <p role="status" style="margin:0 0 14px;padding:12px 14px;background:#F4E6C9;color:#4F3A12;border-radius:3px;font:500 14.5px/1.5 'Figtree',sans-serif">WhatsApp ainda não configurado. Esta é uma prévia — nada foi enviado. Você pode ligar para {{ c.telefone }} e informar os dados abaixo.</p>
+                </sc-if>
+                <pre style="margin:0;padding:16px;background:#F7F1E7;border:1px solid #E2D7C5;border-radius:3px;font:400 14.5px/1.55 'Figtree',sans-serif;white-space:pre-wrap;overflow-wrap:anywhere;color:#302B28">{{ rvMsg }}</pre>
+                <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px">
+                  <sc-if value="{{ waOn }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ rvWaHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:50px;padding:0 20px;background:#586044;color:#fff;border-radius:3px;text-decoration:none;font:600 15.5px 'Figtree',sans-serif">Enviar pelo WhatsApp ↗</a>
+                  </sc-if>
+                  <a href="{{ telHref }}" style="display:inline-flex;align-items:center;min-height:50px;padding:0 18px;border:1.5px solid #703446;color:#703446;border-radius:3px;text-decoration:none;font:600 15px 'Figtree',sans-serif">Ligar {{ c.telefone }}</a>
+                  <button onClick="{{ copyRv }}" style="min-height:50px;padding:0 18px;background:#fff;color:#421D29;border:1.5px solid #421D29;border-radius:3px;font:600 15px 'Figtree',sans-serif;cursor:pointer">Copiar</button>
+                  <button onClick="{{ editRv }}" style="min-height:50px;padding:0 12px;background:none;border:0;color:#703446;font:600 15px 'Figtree',sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Voltar e editar</button>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ================= EVENTOS ================= -->
+    <sc-if value="{{ isEventos }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Eventos">
+        <section aria-labelledby="ev-t" style="background:#421D29;color:#F7F1E7">
+          <div style="max-width:1280px;margin:0 auto;padding:clamp(44px,7vw,88px) clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:36px clamp(28px,5vw,72px);align-items:center">
+            <div>
+              <p style="margin:0 0 10px;font:600 13.5px 'Figtree',sans-serif;letter-spacing:0.08em;color:#E6D6B6">EVENTOS E CONFRATERNIZAÇÕES</p>
+              <h1 id="ev-t" style="margin:0;font:600 clamp(42px,5.6vw,72px)/0.98 'Cormorant Garamond',serif;color:#fff;text-wrap:balance">Seu próximo encontro pode ser aqui.</h1>
+              <p style="margin:20px 0 0;font:400 18px/1.6 'Figtree',sans-serif;color:#F1E6EA;max-width:44ch">Conte o que você está planejando e consulte as possibilidades para celebrar no Olivio.</p>
+              <a href="#evento-form" onClick="{{ goEvForm }}" style="margin-top:26px;display:inline-flex;align-items:center;min-height:52px;padding:0 24px;background:#F7F1E7;color:#421D29;border-radius:3px;text-decoration:none;font:600 16px 'Figtree',sans-serif">Planejar meu evento</a>
+            </div>
+            <div style="display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:12px">
+              <div style="position:relative;aspect-ratio:3/4;background:#5A2A38;border-radius:2px;overflow:hidden">
+                <image-slot id="evento-mesa" shape="rect" placeholder="Mesa montada para evento no Olivio — foto original 3:4"></image-slot>
+              </div>
+              <div style="display:grid;gap:12px">
+                <div style="position:relative;background:#5A2A38;border-radius:2px;overflow:hidden">
+                  <image-slot id="evento-salao" shape="rect" placeholder="Salão — foto original"></image-slot>
+                </div>
+                <div style="position:relative;background:#5A2A38;border-radius:2px;overflow:hidden">
+                  <image-slot id="evento-detalhe" shape="rect" placeholder="Detalhe de serviço — foto original"></image-slot>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="ev-op-t" style="padding:clamp(48px,7vw,88px) 0 0">
+          <div style="max-width:1280px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+            <h2 id="ev-op-t" style="margin:0;font:600 clamp(32px,3.8vw,46px)/1.05 'Cormorant Garamond',serif;color:#421D29">Ocasiões para consulta</h2>
+            <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:24px 36px">
+              <div style="border-top:1px solid #C9BBA6;padding-top:16px"><h3 style="margin:0;font:600 26px 'Cormorant Garamond',serif;color:#421D29">Aniversários</h3><p style="margin:8px 0 0;font:400 16px/1.55 'Figtree',sans-serif;color:#5E554E">Para reunir família e amigos à mesa.</p></div>
+              <div style="border-top:1px solid #C9BBA6;padding-top:16px"><h3 style="margin:0;font:600 26px 'Cormorant Garamond',serif;color:#421D29">Confraternizações</h3><p style="margin:8px 0 0;font:400 16px/1.55 'Figtree',sans-serif;color:#5E554E">Encerramentos de ano, turmas e encontros de grupo.</p></div>
+              <div style="border-top:1px solid #C9BBA6;padding-top:16px"><h3 style="margin:0;font:600 26px 'Cormorant Garamond',serif;color:#421D29">Encontros empresariais</h3><p style="margin:8px 0 0;font:400 16px/1.55 'Figtree',sans-serif;color:#5E554E">Almoços de equipe, recepções e reuniões com clientes.</p></div>
+            </div>
+            <p style="margin:24px 0 0;font:400 15px/1.55 'Figtree',sans-serif;color:#5E554E;max-width:70ch">Cada solicitação é analisada pela equipe. Formato, cardápio, estrutura e valores são apresentados na proposta, de acordo com a data e o número de convidados.</p>
+          </div>
+        </section>
+
+        <section id="evento-form" aria-labelledby="evf-t" style="padding:clamp(40px,6vw,72px) 0 clamp(56px,8vw,96px);scroll-margin-top:84px">
+          <div style="max-width:860px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+            <div id="ev-area" tabindex="-1" style="outline:none;background:#fff;padding:clamp(20px,4vw,40px);border-top:3px solid #703446">
+              <sc-if value="{{ evFormStep }}" hint-placeholder-val="{{ true }}">
+                <form onSubmit="{{ submitEv }}" novalidate="" aria-labelledby="evf-t">
+                  <h2 id="evf-t" style="margin:0;font:600 34px 'Cormorant Garamond',serif;color:#421D29">Solicitar proposta</h2>
+                  <p style="margin:6px 0 20px;font:400 15px/1.5 'Figtree',sans-serif;color:#5E554E">Campos com * são obrigatórios. A data informada é uma preferência e não fica bloqueada.</p>
+                  <sc-if value="{{ evHasErrors }}" hint-placeholder-val="{{ false }}">
+                    <div role="alert" style="margin:0 0 18px;padding:12px 14px;border:2px solid #A3262A;border-radius:3px;background:#FBEDED;color:#6E1518;font:500 14.5px/1.5 'Figtree',sans-serif">Revise os campos indicados.</div>
+                  </sc-if>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px 20px">
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ev-nome" style="font:600 15px 'Figtree',sans-serif">Nome *</label>
+                      <input id="ev-nome" type="text" autocomplete="name" value="{{ ev.nome.v }}" onChange="{{ ev.nome.on }}" aria-invalid="{{ ev.nome.inv }}" aria-describedby="ev-nome-e" style="min-height:50px;padding:0 14px;border:1.5px solid {{ ev.nome.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                      <span id="ev-nome-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.nome.err }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ev-contato" style="font:600 15px 'Figtree',sans-serif">Telefone ou e-mail *</label>
+                      <input id="ev-contato" type="text" autocomplete="tel" value="{{ ev.contato.v }}" onChange="{{ ev.contato.on }}" aria-invalid="{{ ev.contato.inv }}" aria-describedby="ev-contato-e" style="min-height:50px;padding:0 14px;border:1.5px solid {{ ev.contato.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                      <span id="ev-contato-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.contato.err }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ev-tipo" style="font:600 15px 'Figtree',sans-serif">Tipo de evento *</label>
+                      <select id="ev-tipo" value="{{ ev.tipo.v }}" onChange="{{ ev.tipo.on }}" aria-invalid="{{ ev.tipo.inv }}" aria-describedby="ev-tipo-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ ev.tipo.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                        <sc-for list="{{ tipoOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+                      </select>
+                      <span id="ev-tipo-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.tipo.err }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ev-data" style="font:600 15px 'Figtree',sans-serif">Data desejada *</label>
+                      <input id="ev-data" type="date" min="{{ evDateMin }}" value="{{ ev.data.v }}" onChange="{{ ev.data.on }}" aria-invalid="{{ ev.data.inv }}" aria-describedby="ev-data-h ev-data-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ ev.data.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                      <span id="ev-data-h" style="font:400 13.5px 'Figtree',sans-serif;color:#5E554E">Preferência de data — não indica disponibilidade.</span>
+                      <span id="ev-data-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.data.err }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ev-periodo" style="font:600 15px 'Figtree',sans-serif">Período *</label>
+                      <select id="ev-periodo" value="{{ ev.periodo.v }}" onChange="{{ ev.periodo.on }}" aria-invalid="{{ ev.periodo.inv }}" aria-describedby="ev-periodo-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ ev.periodo.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                        <sc-for list="{{ periodoOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+                      </select>
+                      <span id="ev-periodo-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.periodo.err }}</span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <label for="ev-pessoas" style="font:600 15px 'Figtree',sans-serif">Quantidade estimada de pessoas *</label>
+                      <input id="ev-pessoas" type="number" inputmode="numeric" min="1" value="{{ ev.pessoas.v }}" onChange="{{ ev.pessoas.on }}" aria-invalid="{{ ev.pessoas.inv }}" aria-describedby="ev-pessoas-e" style="min-height:50px;padding:0 12px;border:1.5px solid {{ ev.pessoas.bd }};border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                      <span id="ev-pessoas-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.pessoas.err }}</span>
+                    </div>
+                  </div>
+                  <fieldset style="margin:18px 0 0;padding:0;border:0">
+                    <legend style="padding:0;font:600 15px 'Figtree',sans-serif">Preferência de formato *</legend>
+                    <div style="margin-top:8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px">
+                      <sc-for list="{{ formatoOpts }}" as="x" hint-placeholder-count="3">
+                        <label style="display:flex;align-items:center;gap:10px;padding:0 12px;min-height:50px;border:1.5px solid {{ x.bd }};background:{{ x.bg }};border-radius:3px;cursor:pointer;font:600 15px 'Figtree',sans-serif">
+                          <input type="radio" name="ev-formato" value="{{ x.v }}" checked="{{ x.checked }}" onChange="{{ x.pick }}" style="width:19px;height:19px;margin:0;accent-color:#703446;flex:none">{{ x.l }}
+                        </label>
+                      </sc-for>
+                    </div>
+                    <span style="display:block;margin-top:6px;font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.formato.err }}</span>
+                  </fieldset>
+                  <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px">
+                    <label for="ev-msg" style="font:600 15px 'Figtree',sans-serif">Mensagem *</label>
+                    <textarea id="ev-msg" rows="5" maxlength="1200" value="{{ ev.mensagem.v }}" onChange="{{ ev.mensagem.on }}" aria-invalid="{{ ev.mensagem.inv }}" aria-describedby="ev-msg-h ev-msg-e" placeholder="Conte o que você imagina para o evento." style="padding:10px 14px;border:1.5px solid {{ ev.mensagem.bd }};border-radius:3px;background:#fff;font:400 16px/1.5 'Figtree',sans-serif;color:#302B28;resize:vertical"></textarea>
+                    <span id="ev-msg-h" style="font:400 13.5px 'Figtree',sans-serif;color:#5E554E">Não inclua documentos ou dados pessoais de convidados.</span>
+                    <span id="ev-msg-e" style="font:500 14px 'Figtree',sans-serif;color:#A3262A">{{ ev.mensagem.err }}</span>
+                  </div>
+                  <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;max-width:360px">
+                    <label for="ev-orc" style="font:600 15px 'Figtree',sans-serif">Faixa de orçamento <span style="font-weight:400;color:#5E554E">(opcional)</span></label>
+                    <select id="ev-orc" value="{{ ev.orcamento.v }}" onChange="{{ ev.orcamento.on }}" style="min-height:50px;padding:0 12px;border:1.5px solid #B8AC9C;border-radius:3px;background:#fff;font:400 16px 'Figtree',sans-serif;color:#302B28">
+                      <sc-for list="{{ orcOpts }}" as="o" hint-placeholder-count="1"><option value="{{ o.v }}">{{ o.l }}</option></sc-for>
+                    </select>
+                  </div>
+                  <button type="submit" style="margin-top:24px;min-height:54px;padding:0 28px;background:#703446;color:#fff;border:0;border-radius:3px;font:600 16.5px 'Figtree',sans-serif;cursor:pointer" style-hover="background:#421D29">Solicitar proposta para meu evento</button>
+                  <p style="margin:10px 0 0;font:400 13.5px/1.5 'Figtree',sans-serif;color:#5E554E">A solicitação não bloqueia a data. A equipe retorna com as possibilidades para o seu evento.</p>
+                </form>
+              </sc-if>
+              <sc-if value="{{ evPreviewStep }}" hint-placeholder-val="{{ false }}">
+                <div>
+                  <h2 style="margin:0 0 10px;font:600 32px 'Cormorant Garamond',serif;color:#421D29">Sua solicitação de evento</h2>
+                  <p style="margin:0 0 14px;font:500 16px/1.5 'Figtree',sans-serif">A solicitação não bloqueia a data. A equipe avaliará o pedido e retornará com as possibilidades.</p>
+                  <sc-if value="{{ waOff }}" hint-placeholder-val="{{ true }}">
+                    <p role="status" style="margin:0 0 14px;padding:12px 14px;background:#F4E6C9;color:#4F3A12;border-radius:3px;font:500 14.5px/1.5 'Figtree',sans-serif">WhatsApp ainda não configurado. Esta é uma prévia — nada foi enviado.</p>
+                  </sc-if>
+                  <pre style="margin:0;padding:16px;background:#F7F1E7;border:1px solid #E2D7C5;border-radius:3px;font:400 14.5px/1.55 'Figtree',sans-serif;white-space:pre-wrap;overflow-wrap:anywhere;color:#302B28">{{ evMsg }}</pre>
+                  <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:10px">
+                    <sc-if value="{{ waOn }}" hint-placeholder-val="{{ false }}">
+                      <a href="{{ evWaHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:50px;padding:0 20px;background:#586044;color:#fff;border-radius:3px;text-decoration:none;font:600 15.5px 'Figtree',sans-serif">Enviar pelo WhatsApp ↗</a>
+                    </sc-if>
+                    <button onClick="{{ copyEv }}" style="min-height:50px;padding:0 18px;background:#fff;color:#421D29;border:1.5px solid #421D29;border-radius:3px;font:600 15px 'Figtree',sans-serif;cursor:pointer">Copiar</button>
+                    <button onClick="{{ editEv }}" style="min-height:50px;padding:0 12px;background:none;border:0;color:#703446;font:600 15px 'Figtree',sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer">Voltar e editar</button>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <!-- ================= NOITE JAPONESA ================= -->
+    <sc-if value="{{ isJaponesa }}" hint-placeholder-val="{{ false }}">
+      <article data-screen-label="Noite japonesa" aria-labelledby="jp-t">
+        <div style="max-width:1280px;margin:0 auto;padding:clamp(36px,6vw,72px) clamp(18px,4vw,48px) clamp(56px,8vw,96px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px clamp(28px,5vw,72px);align-items:start">
+          <figure style="margin:0;position:relative">
+            <div style="position:relative;aspect-ratio:4/3;background:#EFE5D5;border-radius:2px;overflow:hidden"><image-slot id="noite-japonesa-foto" shape="rect" placeholder="Foto original da noite japonesa — horizontal 4:3, mín. 1600 px"></image-slot></div>
+            <sc-if value="{{ jpImgMarcar }}" hint-placeholder-val="{{ false }}">
+              <figcaption style="position:absolute;left:12px;bottom:12px;padding:5px 9px;background:rgba(247,241,231,0.94);color:#421D29;border-radius:2px;font:600 12px 'Figtree',sans-serif">Imagem provisória</figcaption>
+            </sc-if>
+          </figure>
+          <div>
+            <a href="#/experiencias" style="display:inline-flex;align-items:center;min-height:44px;font:600 14.5px 'Figtree',sans-serif">← Experiências</a>
+            <p style="margin:12px 0 0;display:flex;align-items:center;gap:8px;font:600 13px 'Figtree',sans-serif;color:#586044"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#586044"></span>Experiência no restaurante</p>
+            <h1 id="jp-t" style="margin:8px 0 0;font:600 clamp(44px,5.6vw,72px)/0.98 'Cormorant Garamond',serif;color:#421D29">Noite japonesa</h1>
+            <p style="margin:16px 0 0;font:400 18px/1.6 'Figtree',sans-serif;max-width:44ch">Rodízio japonês servido no salão às quartas-feiras.</p>
+            <dl style="margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font:400 16px 'Figtree',sans-serif">
+              <dt style="color:#5E554E">Quando</dt><dd style="margin:0;font-weight:600">{{ jp.dia }}</dd>
+              <dt style="color:#5E554E">Horário</dt><dd style="margin:0;font-weight:600">{{ jp.horarioTxt }}</dd>
+            </dl>
+            <sc-if value="{{ jpPendente }}" hint-placeholder-val="{{ true }}">
+              <p role="note" style="margin:22px 0 0;padding:12px 14px;background:#F4E6C9;color:#4F3A12;border-radius:3px;font:500 14.5px/1.5 'Figtree',sans-serif">Valores de referência dos materiais de divulgação, a revisar. Este bloco fica oculto na publicação até a validação.</p>
+            </sc-if>
+            <ul style="list-style:none;margin:18px 0 0;padding:0;border-top:2px solid #421D29">
+              <sc-for list="{{ jp.precos }}" as="p" hint-placeholder-count="2">
+                <li style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid #E2D7C5">
+                  <div><p style="margin:0;font:600 26px/1.1 'Cormorant Garamond',serif;color:#421D29">{{ p.nome }}</p><p style="margin:4px 0 0;font:400 14.5px 'Figtree',sans-serif;color:#5E554E">{{ p.nota }}</p></div>
+                  <p style="margin:0;text-align:right;font:600 20px 'Figtree',sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ p.precoTxt }}<span style="display:block;font:400 13.5px 'Figtree',sans-serif;color:#5E554E">{{ p.unidadeTxt }}</span></p>
+                </li>
+              </sc-for>
+            </ul>
+            <p style="margin:12px 0 0;font:500 15px 'Figtree',sans-serif">{{ jp.observacao }}</p>
+            <p style="margin:6px 0 0;font:400 14.5px/1.5 'Figtree',sans-serif;color:#5E554E">Cobrança por pessoa, somente no salão. Não é o mesmo valor do buffet de almoço, cobrado por quilo. Não disponível para pedido online.</p>
+            <a href="#/reservar?exp=japonesa" style="margin-top:22px;display:inline-flex;align-items:center;min-height:52px;padding:0 24px;background:#703446;color:#fff;border-radius:3px;text-decoration:none;font:600 16px 'Figtree',sans-serif" style-hover="background:#421D29;color:#fff">Consultar reserva</a>
+
+            <h2 style="margin:40px 0 4px;font:600 30px 'Cormorant Garamond',serif;color:#421D29">Itens divulgados</h2>
+            <p style="margin:0 0 14px;font:400 14px 'Figtree',sans-serif;color:#5E554E">Conforme o material de divulgação. Sujeito a alteração.</p>
+            <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px 24px">
+              <sc-for list="{{ jp.itensDivulgados }}" as="g" hint-placeholder-count="6">
+                <div style="border-top:1px solid #C9BBA6;padding-top:10px">
+                  <dt style="font:600 15px 'Figtree',sans-serif;color:#421D29">{{ g.grupo }}</dt>
+                  <dd style="margin:4px 0 0;font:400 14.5px/1.5 'Figtree',sans-serif;color:#5E554E">{{ g.lista }}</dd>
+                </div>
+              </sc-for>
+            </dl>
+          </div>
+        </div>
+      </article>
+    </sc-if>
+
+    <!-- ================= PRIVACIDADE ================= -->
+    <sc-if value="{{ isPrivacidade }}" hint-placeholder-val="{{ false }}">
+      <article data-screen-label="Privacidade" aria-labelledby="pv-t" style="padding:clamp(40px,6vw,80px) 0">
+        <div style="max-width:760px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+          <h1 id="pv-t" style="margin:0;font:600 clamp(40px,5vw,60px)/1 'Cormorant Garamond',serif;color:#421D29">Privacidade</h1>
+          <p style="margin:10px 0 0;font:500 14px 'Figtree',sans-serif;color:#5E554E">Texto provisório — revisar com o responsável antes da publicação.</p>
+          <sc-for list="{{ privacidade }}" as="s" hint-placeholder-count="4">
+            <section><h2 style="margin:30px 0 8px;font:600 26px 'Cormorant Garamond',serif;color:#421D29">{{ s.t }}</h2><p style="margin:0;font:400 17px/1.65 'Figtree',sans-serif">{{ s.p }}</p></section>
+          </sc-for>
+        </div>
+      </article>
+    </sc-if>
+
+    <sc-if value="{{ isNotFound }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:clamp(64px,10vw,140px) 0">
+        <div style="max-width:760px;margin:0 auto;padding:0 clamp(18px,4vw,48px)">
+          <h1 style="margin:0;font:600 clamp(40px,5vw,60px)/1 'Cormorant Garamond',serif;color:#421D29">Página não encontrada</h1>
+          <a href="#/" style="margin-top:20px;display:inline-flex;align-items:center;min-height:48px;padding:0 20px;background:#703446;color:#fff;border-radius:3px;text-decoration:none;font:600 15px 'Figtree',sans-serif">Voltar ao início</a>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <footer style="background:#2C141C;color:#EADFE2">
+    <div style="max-width:1280px;margin:0 auto;padding:56px clamp(18px,4vw,48px) 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px 48px">
+      <div>
+        <img src="assets/olivio/logo-olivio-branco.png" alt="Olivio Gastrobar, desde 2025" width="712" height="416" style="height:84px;width:auto">
+        <p style="margin:16px 0 0;font:400 15px/1.55 'Figtree',sans-serif">Gastronomia afetiva, drinks e chopp.</p>
+        <address style="margin:12px 0 0;font:400 15px/1.55 'Figtree',sans-serif;font-style:normal">{{ c.endereco }}</address>
+      </div>
+      <nav aria-label="Rodapé">
+        <p style="margin:0 0 6px;font:600 13px 'Figtree',sans-serif;color:#E6D6B6">Navegação</p>
+        <ul style="list-style:none;margin:0;padding:0">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5"><li><a href="{{ n.href }}" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;text-decoration:none;font:500 15px 'Figtree',sans-serif" style-hover="text-decoration:underline;color:#fff">{{ n.label }}</a></li></sc-for>
+        </ul>
+      </nav>
+      <div>
+        <p style="margin:0 0 6px;font:600 13px 'Figtree',sans-serif;color:#E6D6B6">Contato</p>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li><a href="{{ telHref }}" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;font:500 15px 'Figtree',sans-serif">{{ c.telefone }}</a></li>
+          <li><a href="{{ instaUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;font:500 15px 'Figtree',sans-serif">Instagram @{{ c.instagram }} ↗</a></li>
+          <li><a href="{{ c.mapsUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;font:500 15px 'Figtree',sans-serif">Como chegar ↗</a></li>
+          <li><a href="#/privacidade" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;font:500 15px 'Figtree',sans-serif">Privacidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <p style="margin:0 0 6px;font:600 13px 'Figtree',sans-serif;color:#E6D6B6">Faça agora</p>
+        <ul style="list-style:none;margin:0;padding:0">
+          <li><a href="#/pedir" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;font:500 15px 'Figtree',sans-serif">Pedir online</a></li>
+          <li><a href="#/reservar" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;font:500 15px 'Figtree',sans-serif">Reservar mesa</a></li>
+          <li><a href="#/eventos" style="display:inline-flex;align-items:center;min-height:40px;color:#fff;font:500 15px 'Figtree',sans-serif">Planejar evento</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:16px clamp(18px,4vw,48px) 26px;border-top:1px solid rgba(255,255,255,0.15);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font:400 13.5px 'Figtree',sans-serif;color:#CDB9BF">
+      <span>Conteúdo atualizado em {{ atualizadoTxt }}</span>
+      <span>Políticas comerciais serão publicadas quando fornecidas pelo estabelecimento.</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="Ações rápidas" style="position:fixed;left:0;right:0;bottom:0;z-index:45;background:#F7F1E7;border-top:1px solid #D9CCB7;padding:8px 10px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <a href="#/pedir" style="display:flex;align-items:center;justify-content:center;min-height:48px;background:#703446;color:#fff;border-radius:3px;text-decoration:none;font:600 14.5px 'Figtree',sans-serif">Pedir online</a>
+      <a href="#/reservar" style="display:flex;align-items:center;justify-content:center;min-height:48px;border:1.5px solid #703446;color:#703446;border-radius:3px;text-decoration:none;font:600 14.5px 'Figtree',sans-serif">Reservar</a>
+      <a href="#/sacola" aria-label="{{ cartAria }}" style="display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;border:1.5px solid #421D29;color:#421D29;border-radius:3px;text-decoration:none;font:600 14.5px 'Figtree',sans-serif">Sacola<span aria-hidden="true" style="min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:#586044;color:#fff;font:700 12px/22px 'Figtree',sans-serif;text-align:center">{{ cartCount }}</span></a>
+    </nav>
+  </sc-if>
+
+  <!-- Modal de opções do item -->
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ m.backdrop }}" style="position:fixed;inset:0;z-index:70;background:rgba(48,43,40,0.55);display:flex;align-items:flex-end;justify-content:center;padding:{{ modalPad }}">
+      <div role="dialog" aria-modal="true" aria-labelledby="md-t" onClick="{{ m.stop }}" style="width:100%;max-width:560px;max-height:{{ modalMaxH }};display:flex;flex-direction:column;background:#F7F1E7;border-radius:{{ modalRadius }};overflow:hidden">
+        <div style="padding:20px 22px 14px;border-bottom:1px solid #E2D7C5;display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
+          <div style="min-width:0">
+            <sc-if value="{{ m.exemplo }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;margin-bottom:6px;padding:3px 8px;background:#F4E6C9;color:#4F3A12;border-radius:2px;font:600 12px 'Figtree',sans-serif">Exemplo — preço demonstrativo</span></sc-if>
+            <h2 id="md-t" tabindex="-1" style="margin:0;font:600 30px/1.05 'Cormorant Garamond',serif;color:#421D29;outline:none">{{ m.nome }}</h2>
+            <p style="margin:6px 0 0;font:400 15px/1.5 'Figtree',sans-serif;color:#5E554E">{{ m.descricao }}</p>
+            <p style="margin:8px 0 0;font:600 16px 'Figtree',sans-serif">{{ m.precoBaseTxt }}</p>
+          </div>
+          <button onClick="{{ m.close }}" aria-label="Fechar" style="flex:none;width:44px;height:44px;background:none;border:1.5px solid #C9BBA6;border-radius:3px;font:500 22px/1 'Figtree',sans-serif;color:#421D29;cursor:pointer">×</button>
+        </div>
+        <div style="flex:1;overflow:auto;padding:4px 22px 18px">
+          <sc-for list="{{ m.grupos }}" as="g" hint-placeholder-count="2">
+            <fieldset style="margin:16px 0 0;padding:0;border:0">
+              <legend style="width:100%;padding:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+                <span style="font:600 16px 'Figtree',sans-serif;color:#302B28">{{ g.nome }}</span>
+                <span style="font:600 12.5px 'Figtree',sans-serif;color:{{ g.regraCor }};white-space:nowrap">{{ g.regra }}</span>
+              </legend>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+                <sc-for list="{{ g.opcoes }}" as="o" hint-placeholder-count="2">
+                  <label style="display:flex;align-items:center;gap:12px;min-height:50px;padding:0 14px;background:#fff;border:1.5px solid {{ o.bd }};border-radius:3px;cursor:{{ o.cursor }};opacity:{{ o.opacity }}">
+                    <input type="{{ g.tipo }}" name="{{ g.name }}" checked="{{ o.checked }}" disabled="{{ o.disabled }}" onChange="{{ o.toggle }}" style="width:20px;height:20px;margin:0;accent-color:#703446;flex:none">
+                    <span style="flex:1;font:500 15.5px 'Figtree',sans-serif">{{ o.nome }}</span>
+                    <span style="font:600 14.5px 'Figtree',sans-serif;color:#5E554E;font-variant-numeric:tabular-nums">{{ o.precoTxt }}</span>
+                  </label>
+                </sc-for>
+              </div>
+            </fieldset>
+          </sc-for>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:6px">
+            <label for="md-obs" style="font:600 15px 'Figtree',sans-serif">Observações <span style="font-weight:400;color:#5E554E">(opcional)</span></label>
+            <textarea id="md-obs" rows="2" maxlength="140" value="{{ m.obs }}" onChange="{{ m.onObs }}" aria-describedby="md-obs-h" style="padding:10px 14px;border:1.5px solid #B8AC9C;border-radius:3px;background:#fff;font:400 16px/1.5 'Figtree',sans-serif;color:#302B28;resize:vertical"></textarea>
+            <span id="md-obs-h" style="font:400 13px/1.45 'Figtree',sans-serif;color:#5E554E">Ex.: ponto da carne, sem cebola. Observações não substituem as escolhas acima nem alteram valores. {{ m.obsCount }}</span>
+          </div>
+        </div>
+        <div style="padding:14px 22px calc(14px + env(safe-area-inset-bottom));border-top:1px solid #E2D7C5;background:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+          <div role="group" aria-label="Quantidade" style="display:flex;align-items:center;border:1.5px solid #B8AC9C;border-radius:3px">
+            <button onClick="{{ m.dec }}" aria-label="Diminuir quantidade" style="width:44px;height:48px;background:none;border:0;font:600 20px 'Figtree',sans-serif;color:#421D29;cursor:pointer">−</button>
+            <span aria-live="polite" style="min-width:30px;text-align:center;font:600 16px 'Figtree',sans-serif">{{ m.qty }}</span>
+            <button onClick="{{ m.inc }}" aria-label="Aumentar quantidade" style="width:44px;height:48px;background:none;border:0;font:600 20px 'Figtree',sans-serif;color:#421D29;cursor:pointer">+</button>
+          </div>
+          <button onClick="{{ m.add }}" aria-disabled="{{ m.ariaDisabled }}" style="flex:1;min-width:200px;min-height:50px;padding:0 16px;background:{{ m.addBg }};color:#fff;border:0;border-radius:3px;font:600 15.5px 'Figtree',sans-serif;cursor:pointer;font-variant-numeric:tabular-nums">{{ m.addLabel }}</button>
+          <p aria-live="polite" style="flex-basis:100%;margin:0;font:500 13.5px 'Figtree',sans-serif;color:{{ m.msgCor }}">{{ m.msg }}</p>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div role="status" aria-live="polite" style="position:fixed;left:50%;bottom:{{ toastBottom }};transform:translateX(-50%);z-index:80;pointer-events:none;max-width:calc(100vw - 32px)">
+    <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;padding:13px 18px;background:#421D29;color:#fff;border-radius:3px;font:500 15px/1.4 'Figtree',sans-serif;text-align:center">{{ toast }}</p>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;modoRevisao&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Publicação&quot;},&quot;simularEntrega&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Publicação&quot;},&quot;abertura&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;fachada&quot;,&quot;varanda&quot;],&quot;default&quot;:&quot;fachada&quot;,&quot;tsType&quot;:&quot;'fachada' | 'varanda'&quot;,&quot;section&quot;:&quot;Visual&quot;}}">
+const LS_KEY = 'olivio_sacola_v1';
+const brl = n => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const UNID = { kg: 'por kg', pessoa: 'por pessoa', item: '' };
+const DIAS = ['domingos', 'segundas', 'terças', 'quartas', 'quintas', 'sextas', 'sábados'];
+const DIA1 = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+const ERR = '#A3262A', OKB = '#B8AC9C';
+const fmtData = d => { if (!d) return ''; const [y, m, dd] = d.split('-'); return `${dd}/${m}/${y}`; };
+const weekday = d => { const [y, m, dd] = d.split('-').map(Number); return new Date(Date.UTC(y, m - 1, dd)).getUTCDay(); };
+const addDays = (d, n) => { const [y, m, dd] = d.split('-').map(Number); const t = new Date(Date.UTC(y, m - 1, dd + n)); return t.toISOString().slice(0, 10); };
+const contatoOk = c => { c = (c || '').trim(); const dg = c.replace(/\D/g, ''); return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c) || (!/[a-z@]/i.test(c) && dg.length >= 10 && dg.length <= 13); };
+const foneOk = c => { const dg = (c || '').replace(/\D/g, ''); return !/[a-z@]/i.test(c || '') && dg.length >= 10 && dg.length <= 13; };
+const PRIV = [
+  { t: 'Dados solicitados', p: 'Pedidos, reservas e solicitações de evento pedem apenas o necessário para o atendimento: nome, contato e, na entrega, o endereço.' },
+  { t: 'Armazenamento', p: 'A sacola fica salva somente neste navegador, com os itens escolhidos. Nome, contato e endereço não são salvos. Nesta versão, nenhuma informação é enviada a servidores; as mensagens são abertas no WhatsApp pelo próprio visitante.' },
+  { t: 'Uso das informações', p: 'Os dados enviados ao Olivio são usados apenas para responder ao pedido, à reserva ou à solicitação de evento.' },
+  { t: 'Contato', p: 'Para dúvidas sobre seus dados, fale com o Olivio pelo telefone informado no site.' }
+];
+
+class Component extends DCLogic {
+  state = {
+    cfg: window.OG_CONFIG || null, w: window.innerWidth, route: this.parse(), menuOpen: false,
+    cart: this.loadCart(), q: '', cat: '', modal: null, toast: '',
+    ck: { modalidade: '', nome: '', contato: '', bairro: '', rua: '', complemento: '', obsGeral: '' }, ckErr: {}, ckStep: 'form',
+    rv: { exp: '', data: '', hora: '', pessoas: '2', nome: '', contato: '', obs: '' }, rvErr: {}, rvStep: 'form',
+    ev: { nome: '', contato: '', tipo: '', data: '', periodo: '', pessoas: '', formato: '', mensagem: '', orcamento: '' }, evErr: {}, evStep: 'form'
+  };
+
+  parse() {
+    const h = (location.hash || '#/').replace(/^#/, ''); const [p, qs] = h.split('?');
+    const parts = p.split('/').filter(Boolean); const query = {};
+    new URLSearchParams(qs || '').forEach((v, k) => { query[k] = v; });
+    return { page: parts[0] || 'inicio', id: parts[1] || null, query };
+  }
+  loadCart() { try { const v = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  saveCart(cart) { try { localStorage.setItem(LS_KEY, JSON.stringify(cart.map(l => ({ pid: l.pid, sel: l.sel, qty: l.qty, obs: l.obs })))); } catch (e) {} }
+
+  componentDidMount() {
+    this._rs = () => this.setState({ w: window.innerWidth });
+    this._hc = () => this.onRoute(false);
+    this._kd = e => { if (e.key === 'Escape') { if (this.state.modal) this.closeModal(); else if (this.state.menuOpen) this.setState({ menuOpen: false }); } };
+    window.addEventListener('resize', this._rs); window.addEventListener('hashchange', this._hc); window.addEventListener('keydown', this._kd);
+    if (!this.state.cfg) this._poll = setInterval(() => { if (window.OG_CONFIG) { clearInterval(this._poll); this.setState({ cfg: window.OG_CONFIG }, () => this.onRoute(true)); } }, 40);
+    else this.onRoute(true);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._rs); window.removeEventListener('hashchange', this._hc); window.removeEventListener('keydown', this._kd);
+    clearInterval(this._poll); clearTimeout(this._tt); document.body.style.overflow = '';
+  }
+
+  tz() { return (this.state.cfg && this.state.cfg.fuso) || 'America/Sao_Paulo'; }
+  nowSP() {
+    const p = {}; new Intl.DateTimeFormat('en-CA', { timeZone: this.tz(), year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+    return { date: `${p.year}-${p.month}-${p.day}`, min: (+p.hour) * 60 + (+p.minute) };
+  }
+  revisao() { return this.props.modoRevisao ?? true; }
+  entregaAtiva() { const c = this.state.cfg; return !!(c && (c.modalidades.entrega.ativo || (this.props.simularEntrega ?? false))); }
+  jpVisivel() { const c = this.state.cfg; return !!(c && (c.noiteJaponesa.validado || this.revisao())); }
+
+  onRoute(initial) {
+    const r = this.parse(); const upd = { route: r, menuOpen: false };
+    if (r.page === 'reservar' && r.query.exp) { upd.rv = { ...this.state.rv, exp: r.query.exp, hora: '' }; upd.rvStep = 'form'; }
+    this.setState(upd, () => {
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const anchor = { casa: 'casa', experiencias: 'experiencias', localizacao: 'localizacao' }[r.page];
+      requestAnimationFrame(() => {
+        const el = anchor && document.getElementById(anchor);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: reduce ? 'auto' : 'smooth' });
+        else if (!initial) window.scrollTo(0, 0);
+        if (!initial && !anchor) { const m = document.getElementById('conteudo'); if (m) m.focus({ preventScroll: true }); }
+      });
+      if (r.page === 'pedir' && r.query.item) this.openProduct(r.query.item);
+      this.updateMeta();
+    });
+  }
+  updateMeta() {
+    const pg = this.state.route.page; const base = 'Olivio Gastrobar — Matão/SP';
+    const M = {
+      cardapio: ['Cardápio da casa — Olivio Gastrobar', 'Cardápio do Olivio Gastrobar, com disponibilidade no salão, retirada e entrega.'],
+      pedir: ['Pedir online — Olivio Gastrobar', 'Escolha itens do Olivio Gastrobar e envie seu pedido pelo WhatsApp.'],
+      sacola: ['Sacola — Olivio Gastrobar', 'Confira os itens e finalize seu pedido.'],
+      reservar: ['Reservar mesa — Olivio Gastrobar', 'Solicite uma reserva para almoço, happy hour ou noite japonesa no Olivio.'],
+      eventos: ['Eventos — Olivio Gastrobar', 'Solicite uma proposta para aniversários, confraternizações e encontros empresariais no Olivio.'],
+      'noite-japonesa': ['Noite japonesa — Olivio Gastrobar', 'Rodízio japonês às quartas-feiras no Olivio Gastrobar.'],
+      privacidade: ['Privacidade — Olivio Gastrobar', 'Como o site do Olivio trata seus dados.']
+    }[pg];
+    document.title = M ? M[0] : base;
+    let md = document.querySelector('meta[name="description"]'); if (!md) { md = document.createElement('meta'); md.name = 'description'; document.head.appendChild(md); }
+    md.content = M ? M[1] : 'Olivio Gastrobar em Matão/SP: gastronomia afetiva, drinks e chopp. Peça online, solicite uma reserva ou planeje seu evento.';
+  }
+  toast(msg) { clearTimeout(this._tt); this.setState({ toast: msg }); this._tt = setTimeout(() => this.setState({ toast: '' }), 3000); }
+  async copy(text, ok) { try { await navigator.clipboard.writeText(text); this.toast(ok); } catch (e) { this.toast('Não foi possível copiar. Selecione o texto manualmente.'); } }
+
+  // ---------- produtos ----------
+  products() { const c = this.state.cfg; return c ? c.produtos.filter(p => this.revisao() || !p.exemplo) : []; }
+  online(p) {
+    const c = this.state.cfg; if (p.alcoolico && !c.bebidasAlcoolicasOnline) return false; if (p.preco == null) return false;
+    return (p.disponivel.retirada && c.modalidades.retirada.ativo) || (p.disponivel.entrega && this.entregaAtiva());
+  }
+  unitPrice(p, sel) {
+    let t = p.preco || 0;
+    (p.grupos || []).forEach(g => (sel[g.id] || []).forEach(oid => { const o = g.opcoes.find(x => x.id === oid); if (o) t += o.preco; }));
+    return t;
+  }
+  groupsValid(p, sel) { return (p.grupos || []).every(g => { const n = (sel[g.id] || []).length; return n >= g.min && n <= g.max; }); }
+  addLine(pid, sel, qty, obs) {
+    const key = pid + '|' + JSON.stringify(Object.keys(sel).sort().map(k => [k, [...sel[k]].sort()])) + '|' + obs.trim();
+    this.setState(st => {
+      const cart = [...st.cart]; const i = cart.findIndex(l => l.key === key);
+      if (i >= 0) cart[i] = { ...cart[i], qty: Math.min(20, cart[i].qty + qty) }; else cart.push({ key, pid, sel, qty, obs: obs.trim() });
+      this.saveCart(cart); return { cart, ckStep: 'form' };
+    });
+  }
+  openProduct(pid) {
+    const p = this.products().find(x => x.id === pid); if (!p || !this.online(p) || p.indisponivel) return;
+    if (!(p.grupos || []).length && !this._forceModal) { this.addLine(p.id, {}, 1, ''); this.toast(`${p.nome} adicionado à sacola`); return; }
+    this._lastFocus = document.activeElement;
+    const sel = {}; (p.grupos || []).forEach(g => { sel[g.id] = []; });
+    document.body.style.overflow = 'hidden';
+    this.setState({ modal: { pid, sel, qty: 1, obs: '', tried: false, msg: '' } }, () => requestAnimationFrame(() => { const h = document.getElementById('md-t'); if (h) h.focus(); }));
+  }
+  closeModal() {
+    document.body.style.overflow = ''; this.setState({ modal: null });
+    const f = this._lastFocus; if (f && f.focus) requestAnimationFrame(() => f.focus());
+  }
+
+  // ---------- formulários ----------
+  fields(formKey, errKey, keys, validate) {
+    const f = this.state[formKey], e = this.state[errKey], o = {};
+    keys.forEach(k => {
+      o[k] = {
+        v: f[k], err: e[k] || '', inv: e[k] ? 'true' : 'false', bd: e[k] ? ERR : OKB,
+        on: ev => { const val = ev.target.value; this.setState(st => { const nf = { ...st[formKey], [k]: val }; const ne = { ...st[errKey] }; if (ne[k]) { const r = validate.call(this, nf); if (r[k]) ne[k] = r[k]; else delete ne[k]; } return { [formKey]: nf, [errKey]: ne }; }); }
+      };
+    });
+    return o;
+  }
+  focusFirst(errors, map) { const k = Object.keys(map).find(x => errors[x]); const el = k && document.getElementById(map[k]); if (el) el.focus(); }
+  focusArea(id) { requestAnimationFrame(() => { const a = document.getElementById(id); if (a) { window.scrollTo({ top: a.getBoundingClientRect().top + window.scrollY - 100 }); a.focus({ preventScroll: true }); } }); }
+
+  validateCk(f) {
+    const e = {}; const mods = this.modalidadesDisp();
+    if (!f.modalidade || !mods.includes(f.modalidade)) e.modalidade = 'Escolha a modalidade.';
+    if (f.nome.trim().length < 2) e.nome = 'Informe seu nome.';
+    if (!foneOk(f.contato)) e.contato = 'Informe um telefone com DDD.';
+    if (f.modalidade === 'entrega') { if (!f.bairro) e.bairro = 'Escolha o bairro.'; if (f.rua.trim().length < 5) e.rua = 'Informe rua e número.'; }
+    return e;
+  }
+  modalidadesDisp() { const c = this.state.cfg; const m = []; if (c.modalidades.retirada.ativo) m.push('retirada'); if (this.entregaAtiva()) m.push('entrega'); return m; }
+  rvExp(id) { return this.state.cfg.reservas.experiencias.find(x => x.id === id); }
+  rvExpsVisiveis() { return this.state.cfg.reservas.experiencias.filter(x => !x.requerValidacao || this.jpVisivel()); }
+  horasPara(exp, data) {
+    if (!exp) return [];
+    if (!exp.horarios.length) return [{ v: 'A combinar', l: 'A combinar com a equipe' }];
+    const now = this.nowSP(); const ant = this.state.cfg.reservas.antecedenciaMinutos || 0;
+    return exp.horarios.filter(h => { if (data !== now.date) return true; const [hh, mm] = h.split(':').map(Number); return hh * 60 + mm >= now.min + ant; }).map(h => ({ v: h, l: h.replace(':', 'h') }));
+  }
+  validateRv(f) {
+    const e = {}; const R = this.state.cfg.reservas; const exp = this.rvExp(f.exp); const now = this.nowSP();
+    if (!exp || !this.rvExpsVisiveis().includes(exp)) e.exp = 'Escolha a experiência.';
+    if (!f.data) e.data = 'Escolha a data.';
+    else if (f.data < now.date) e.data = 'Escolha uma data a partir de hoje.';
+    else if (f.data > addDays(now.date, R.diasMaximos)) e.data = `Reservas com até ${R.diasMaximos} dias de antecedência.`;
+    else if (exp && !exp.dias.includes(weekday(f.data))) e.data = `${exp.nome}: ${DIA1[weekday(f.data)]} não está disponível. ${this.diasTxt(exp)}`;
+    if (exp && f.data && !e.data) { const hs = this.horasPara(exp, f.data); if (!hs.length) e.data = 'Não há horários disponíveis para hoje. Escolha outra data.'; else if (!hs.some(h => h.v === f.hora)) e.hora = 'Escolha um horário.'; }
+    else if (!f.hora) e.hora = 'Escolha um horário.';
+    const n = parseInt(f.pessoas, 10);
+    if (!n || n < R.pessoasMin) e.pessoas = 'Informe o número de pessoas.';
+    else if (n > R.pessoasMax) e.pessoas = `Para mais de ${R.pessoasMax} pessoas, use a solicitação de eventos.`;
+    if (f.nome.trim().length < 2) e.nome = 'Informe seu nome.';
+    if (!contatoOk(f.contato)) e.contato = 'Informe telefone com DDD ou e-mail válido.';
+    return e;
+  }
+  diasTxt(exp) {
+    if (!exp) return 'Escolha uma experiência para ver os dias aceitos.';
+    if (exp.dias.length === 7) return 'Dias aceitos: todos os dias.';
+    return 'Dias aceitos: ' + exp.dias.map(d => DIAS[d]).join(', ').replace(/, ([^,]*)$/, ' e $1') + '.';
+  }
+  validateEv(f) {
+    const e = {}; const now = this.nowSP(); const E = this.state.cfg.eventos;
+    if (f.nome.trim().length < 2) e.nome = 'Informe seu nome.';
+    if (!contatoOk(f.contato)) e.contato = 'Informe telefone com DDD ou e-mail válido.';
+    if (!f.tipo) e.tipo = 'Escolha o tipo de evento.';
+    if (!f.data) e.data = 'Escolha a data desejada.'; else if (f.data <= now.date) e.data = 'Escolha uma data a partir de amanhã.';
+    if (!f.periodo) e.periodo = 'Escolha o período.';
+    const n = parseInt(f.pessoas, 10); if (!n || n < 1) e.pessoas = 'Informe a quantidade estimada.'; else if (n > E.pessoasMax) e.pessoas = `Para mais de ${E.pessoasMax} pessoas, descreva na mensagem e informe ${E.pessoasMax}.`;
+    if (!f.formato) e.formato = 'Escolha uma preferência.';
+    if (f.mensagem.trim().length < 10) e.mensagem = 'Conte um pouco sobre o evento (mínimo de 10 caracteres).';
+    return e;
+  }
+  waHref(text) { const n = this.state.cfg.contatos.whatsapp; return n ? `https://wa.me/${n}?text=${encodeURIComponent(text)}` : ''; }
+
+  renderVals() {
+    const s = this.state; const cfg = s.cfg;
+    const W = s.w, isDesktop = W >= 1120, isMobile = W < 720, showBar = W < 900;
+    const page = s.route.page; const rev = this.revisao();
+    const base = {
+      skipToMain: () => { const m = document.getElementById('conteudo'); if (m) m.focus(); },
+      isDesktop, isCompact: !isDesktop, showBar, barPad: showBar ? '72px' : '0px', toastBottom: showBar ? '88px' : '24px',
+      menuExpanded: s.menuOpen ? 'true' : 'false', menuLabel: s.menuOpen ? 'Fechar' : 'Menu', showMobileMenu: !isDesktop && s.menuOpen,
+      toggleMenu: () => this.setState(st => ({ menuOpen: !st.menuOpen })), revisao: rev, ready: !!cfg, hasToast: !!s.toast, toast: s.toast
+    };
+    if (!cfg) return { ...base, isHome: false, navItems: [], c: {}, cartCount: 0 };
+
+    const C = cfg.contatos; const entregaOn = this.entregaAtiva(); const retiradaOn = cfg.modalidades.retirada.ativo;
+    const waOn = !!C.whatsapp;
+    const navKey = { inicio: '', casa: 'casa', cardapio: 'cardapio', pedir: 'cardapio', experiencias: 'experiencias', 'noite-japonesa': 'experiencias', eventos: 'eventos', localizacao: 'localizacao' }[page];
+    const navItems = [['A casa', '#/casa', 'casa'], ['Cardápio', '#/cardapio', 'cardapio'], ['Experiências', '#/experiencias', 'experiencias'], ['Eventos', '#/eventos', 'eventos'], ['Localização', '#/localizacao', 'localizacao']]
+      .map(([label, href, k]) => ({ label, href, current: navKey === k ? 'page' : 'false', bar: navKey === k ? '#703446' : 'transparent' }));
+
+    const img = (k, ratioD, ratioM) => { const i = cfg.imagens[k]; return { src: i.src || '', temFoto: !!i.src, semFoto: !i.src, alt: i.alt, pos: isMobile ? i.focoMobile : i.focoDesktop, marcar: rev && i.provisoria && !!i.src, ratio: isMobile ? ratioM : ratioD }; };
+    const heroKey = (this.props.abertura ?? 'fachada') === 'varanda' ? 'varanda' : 'fachada';
+    const casaKey = heroKey === 'varanda' ? 'fachada' : 'varanda';
+
+    const H = id => cfg.horarios.find(h => h.id === id) || {};
+    const jpOk = this.jpVisivel();
+    const expList = [
+      { id: 'almoco', nome: 'Almoço', img: img('almoco', '4/5', '4/5'), desc: 'Buffet com variedade de opções para almoçar com calma, servido no salão.', dias: H('almoco').dias, horario: H('almoco').horario, cobranca: 'Buffet por quilo', href: '#/reservar?exp=almoco', acao: 'Reservar para o almoço' },
+      { id: 'happy', nome: 'Happy hour', img: img('happy', '4/5', '4/5'), desc: 'Drinks e chopp para encerrar o dia em boa companhia.', dias: H('happy').dias, horario: H('happy').horario, cobranca: 'Por item consumido', href: '#/reservar?exp=happy', acao: 'Reservar para o happy hour' },
+      ...(jpOk ? [{ id: 'japonesa', nome: 'Noite japonesa', img: img('japonesa', '4/5', '4/5'), desc: 'Rodízio japonês às quartas-feiras, com opção Premium.', dias: H('japonesa').dias, horario: H('japonesa').horario || 'A confirmar', cobranca: 'Por pessoa', href: '#/noite-japonesa', acao: 'Conhecer a noite japonesa' }] : [])
+    ];
+    const horariosList = cfg.horarios.filter(h => !h.requerValidacao || jpOk).map(h => ({ nome: h.nome, dias: h.nota ? `${h.dias} · ${h.nota}` : h.dias, horario: h.horario || 'A confirmar', cor: h.horario ? '#302B28' : '#7A5A12' }));
+
+    // produtos
+    const foto = p => ({ temFoto: !!p.foto.src, semFoto: !p.foto.src, fotoSrc: p.foto.src || '', fotoAlt: p.foto.alt || p.nome, fotoPos: (isMobile ? p.foto.focoMobile : p.foto.focoDesktop) || '50% 50%' });
+    const all = this.products(); const catName = id => (cfg.categorias.find(c => c.id === id) || {}).nome || id;
+    const tile = p => {
+      const ok = this.online(p) && !p.indisponivel; const hasPaid = (p.grupos || []).some(g => g.opcoes.some(o => o.preco > 0));
+      const disp = [p.disponivel.retirada && retiradaOn ? 'Retirada' : null, p.disponivel.entrega && entregaOn ? 'Entrega' : null].filter(Boolean);
+      return {
+        id: p.id, nome: p.nome, descricao: p.descricao, exemplo: !!p.exemplo, indisponivel: !!p.indisponivel, slot: p.foto.slot, catNome: catName(p.categoria), ...foto(p),
+        precoTxt: (hasPaid ? 'a partir de ' : '') + brl(p.preco), disponivelTxt: disp.length ? 'Disponível para: ' + disp.join(' e ') : '',
+        btnLabel: p.indisponivel ? 'Indisponível' : 'Escolher', btnDisabled: !ok, btnBg: ok ? '#703446' : '#D9CFC0', btnFg: ok ? '#fff' : '#5E554E', cursor: ok ? 'pointer' : 'not-allowed', opacity: p.indisponivel ? '0.72' : '1',
+        btnAria: p.indisponivel ? `${p.nome} — indisponível no momento` : `Escolher ${p.nome}`,
+        open: () => { this._forceModal = false; this.openProduct(p.id); }
+      };
+    };
+    const onlineList = all.filter(p => this.online(p));
+    const destaques = onlineList.filter(p => p.destaque && !p.indisponivel).slice(0, 4).map(tile);
+    const q = s.q.trim().toLowerCase(); const match = p => !q || (p.nome + ' ' + p.descricao).toLowerCase().includes(q);
+    const isCardapio = page === 'cardapio', isPedir = page === 'pedir';
+    const areaList = isPedir ? onlineList : all.filter(p => p.disponivel.salao);
+    const catsAtivas = cfg.categorias.filter(c => areaList.some(p => p.categoria === c.id));
+    const cat = catsAtivas.some(c => c.id === s.cat) ? s.cat : '';
+    const filtered = areaList.filter(p => match(p) && (!cat || p.categoria === cat));
+    const catChips = [{ id: '', nome: 'Todas' }, ...catsAtivas].map(c => ({ l: c.nome, pressed: cat === c.id ? 'true' : 'false', bg: cat === c.id ? '#703446' : 'transparent', fg: cat === c.id ? '#fff' : '#703446', pick: () => this.setState({ cat: c.id }) }));
+    const cardSections = catsAtivas.filter(c => !cat || c.id === cat).map(c => ({
+      id: c.id, nome: c.nome,
+      items: filtered.filter(p => p.categoria === c.id).map(p => ({
+        nome: p.nome, descricao: p.descricao, slot: p.foto.slot + '-casa', ...foto(p),
+        precoTxt: p.preco == null ? 'Consultar' : brl(p.preco), unidadeTxt: UNID[p.unidade] || '',
+        tags: [
+          ...(p.exemplo ? [{ t: 'Exemplo', bd: '#C9A85A', fg: '#4F3A12' }] : []),
+          ...(p.indisponivel ? [{ t: 'Indisponível no momento', bd: '#302B28', fg: '#302B28' }] : []),
+          { t: 'Salão', bd: '#586044', fg: '#3F4630' },
+          ...(p.disponivel.retirada && retiradaOn && this.online(p) ? [{ t: 'Retirada', bd: '#703446', fg: '#703446' }] : []),
+          ...(p.disponivel.entrega && entregaOn && this.online(p) ? [{ t: 'Entrega', bd: '#703446', fg: '#703446' }] : []),
+          ...(p.alcoolico ? [{ t: 'Somente no salão', bd: '#5E554E', fg: '#5E554E' }] : [])
+        ]
+      }))
+    })).filter(sct => sct.items.length);
+    const noSalao = cfg.noSalao.filter(x => (!x.requerValidacao || jpOk) && (!x.referencia || rev || x.validado)).map(x => ({ nome: x.nome, nota: x.nota, precoTxt: x.preco == null ? 'Consultar' : brl(x.preco), unidadeTxt: UNID[x.unidade] || '' }));
+    const nRes = isPedir ? filtered.length : cardSections.reduce((a, b) => a + b.items.length, 0);
+    const modalidadesTxt = [retiradaOn ? 'Retirada no local' : null, entregaOn ? 'Entrega' : null].filter(Boolean).join(' e ') + (entregaOn ? '.' : '. Entrega ainda não disponível.');
+
+    // modal
+    let m = { grupos: [] }; let modalOpen = false;
+    if (s.modal) {
+      const p = all.find(x => x.id === s.modal.pid);
+      if (p) {
+        modalOpen = true; const sel = s.modal.sel; const valid = this.groupsValid(p, sel);
+        const unit = this.unitPrice(p, sel); const tot = unit * s.modal.qty;
+        const setM = patch => this.setState(st => ({ modal: { ...st.modal, ...patch } }));
+        const grupos = (p.grupos || []).map(g => {
+          const chosen = sel[g.id] || []; const n = chosen.length; const radio = g.max === 1;
+          const regra = g.min === 0 ? (g.max === 1 ? 'Opcional · até 1' : `Opcional · até ${g.max}`) : (g.min === g.max ? `Obrigatório · escolha ${g.min}` : `Obrigatório · ${g.min} a ${g.max}`);
+          const falta = s.modal.tried && n < g.min;
+          return {
+            nome: g.nome, regra: falta ? `Faltam ${g.min - n}` : `${regra} (${n}/${g.max})`, regraCor: falta ? ERR : (n >= g.min && g.min > 0 ? '#3F4630' : '#5E554E'),
+            tipo: radio ? 'radio' : 'checkbox', name: `md-${p.id}-${g.id}`,
+            opcoes: g.opcoes.map(o => {
+              const on = chosen.includes(o.id); const block = !radio && !on && n >= g.max;
+              return {
+                nome: o.nome, precoTxt: o.preco > 0 ? '+ ' + brl(o.preco) : '', checked: on, disabled: block,
+                bd: on ? '#703446' : (falta ? ERR : '#D9CFC0'), cursor: block ? 'not-allowed' : 'pointer', opacity: block ? '0.55' : '1',
+                toggle: () => {
+                  const cur = sel[g.id] || []; let next;
+                  if (radio) next = (on && g.min === 0) ? [] : [o.id];
+                  else if (on) next = cur.filter(x => x !== o.id);
+                  else if (cur.length >= g.max) { setM({ msg: `Máximo de ${g.max} escolhas em "${g.nome}".` }); return; }
+                  else next = [...cur, o.id];
+                  setM({ sel: { ...sel, [g.id]: next }, msg: '' });
+                }
+              };
+            })
+          };
+        });
+        m = {
+          nome: p.nome, descricao: p.descricao, exemplo: !!p.exemplo, precoBaseTxt: brl(p.preco), grupos, qty: s.modal.qty, obs: s.modal.obs,
+          obsCount: `${s.modal.obs.length}/140`, onObs: e => setM({ obs: e.target.value.slice(0, 140) }),
+          inc: () => setM({ qty: Math.min(20, s.modal.qty + 1) }), dec: () => setM({ qty: Math.max(1, s.modal.qty - 1) }),
+          addLabel: `Adicionar à sacola · ${brl(tot)}`, addBg: valid ? '#703446' : '#8F7A80', ariaDisabled: valid ? 'false' : 'true',
+          msg: s.modal.msg || (valid ? '' : (s.modal.tried ? 'Complete as escolhas obrigatórias destacadas.' : 'Complete as escolhas obrigatórias para adicionar.')), msgCor: s.modal.tried && !valid ? ERR : '#5E554E',
+          add: () => {
+            if (!valid) { setM({ tried: true, msg: '' }); return; }
+            this.addLine(p.id, sel, s.modal.qty, s.modal.obs); this.closeModal(); this.toast(`${p.nome} adicionado à sacola`);
+          },
+          close: () => this.closeModal(), backdrop: () => this.closeModal(), stop: e => e.stopPropagation()
+        };
+      }
+    }
+
+    // sacola
+    const ck = s.ck; const mods = this.modalidadesDisp(); const mod = mods.includes(ck.modalidade) ? ck.modalidade : (mods.length === 1 ? mods[0] : ck.modalidade);
+    const lines = s.cart.map((l, idx) => {
+      const p = all.find(x => x.id === l.pid);
+      if (!p) return { key: l.key, nome: 'Item removido do cardápio', opts: [], obs: '', temObs: false, aviso: true, avisoTxt: 'Este item não está mais disponível. Remova-o para continuar.', totalTxt: '—', qty: l.qty, unit: 0, total: 0, bad: true, p: null, l };
+      const opts = []; (p.grupos || []).forEach(g => { const names = (l.sel[g.id] || []).map(oid => { const o = g.opcoes.find(x => x.id === oid); return o ? o.nome + (o.preco > 0 ? ` (+${brl(o.preco)})` : '') : null; }).filter(Boolean); if (names.length) opts.push(`${g.nome}: ${names.join(', ')}`); });
+      const unit = this.unitPrice(p, l.sel); let aviso = '';
+      if (!this.online(p) || p.indisponivel) aviso = 'Este item está indisponível no momento. Remova-o para continuar.';
+      else if (!this.groupsValid(p, l.sel)) aviso = 'As opções deste item mudaram. Remova e escolha novamente.';
+      else if (mod && !p.disponivel[mod]) aviso = `Não disponível para ${mod === 'entrega' ? 'entrega' : 'retirada'}.`;
+      return { key: l.key, nome: p.nome, opts, obs: l.obs, temObs: !!l.obs, aviso: !!aviso, avisoTxt: aviso, qty: l.qty, unit, total: unit * l.qty, totalTxt: brl(unit * l.qty), bad: !!aviso, p, l, qtyAria: `Quantidade de ${p.nome}` };
+    }).map((x, idx) => ({
+      ...x,
+      inc: () => this.setState(st => { const cart = st.cart.map((l, i) => i === idx ? { ...l, qty: Math.min(20, l.qty + 1) } : l); this.saveCart(cart); return { cart, ckStep: 'form' }; }),
+      dec: () => this.setState(st => { const cart = st.cart.map((l, i) => i === idx ? { ...l, qty: Math.max(1, l.qty - 1) } : l); this.saveCart(cart); return { cart, ckStep: 'form' }; }),
+      remove: () => { this.setState(st => { const cart = st.cart.filter((_, i) => i !== idx); this.saveCart(cart); return { cart, ckStep: 'form' }; }); this.toast('Item removido da sacola'); }
+    }));
+    const cartCount = s.cart.reduce((a, l) => a + l.qty, 0);
+    const subtotal = lines.reduce((a, l) => a + l.total, 0);
+    const bairroObj = cfg.modalidades.entrega.bairros.find(b => b.nome === ck.bairro);
+    const isEntrega = mod === 'entrega';
+    const taxa = isEntrega ? (bairroObj && bairroObj.taxa != null ? bairroObj.taxa : null) : 0;
+    const totalConhecido = !isEntrega || taxa != null;
+    const minimo = cfg.modalidades.entrega.pedidoMinimo;
+    const ckF = this.fields('ck', 'ckErr', ['nome', 'contato', 'bairro', 'rua', 'complemento', 'obsGeral'], this.validateCk);
+    const modOpts = mods.map(v => ({ v, l: v === 'retirada' ? 'Retirada no local' : 'Entrega', d: v === 'retirada' ? `Retire no ${C.endereco}. ${cfg.modalidades.retirada.prazo ? 'Prazo: ' + cfg.modalidades.retirada.prazo : 'Prazo informado pela equipe.'}` : `Taxa e prazo a confirmar${minimo ? ' · pedido mínimo ' + brl(minimo) : ''}.`, checked: mod === v, bd: mod === v ? '#703446' : (s.ckErr.modalidade ? ERR : '#D9CFC0'), pick: () => this.setState(st => ({ ck: { ...st.ck, modalidade: v }, ckErr: { ...st.ckErr, modalidade: undefined } })) }));
+    const pagTxt = cfg.pagamento[mod || 'retirada'];
+    const buildOrderMsg = () => {
+      const url = location.href.split('#')[0];
+      const out = ['Olá, Olivio! Gostaria de fazer um pedido.', '', `Nome: ${ck.nome.trim()}`, `Telefone: ${ck.contato.trim()}`, `Modalidade: ${isEntrega ? 'Entrega' : 'Retirada no local'}`, '', 'Itens:'];
+      lines.forEach(l => { out.push(`${l.qty}x ${l.nome} — ${l.totalTxt}`); l.opts.forEach(o => out.push(`   • ${o}`)); if (l.obs) out.push(`   • Obs.: ${l.obs}`); out.push(`   Ver item: ${url}#/pedir?item=${l.p.id}`); });
+      out.push('', `Subtotal: ${brl(subtotal)}`);
+      if (isEntrega) { out.push(`Taxa de entrega: ${taxa != null ? brl(taxa) : 'a confirmar'}`); }
+      out.push(`Total: ${totalConhecido ? brl(subtotal + (taxa || 0)) : 'a confirmar (depende da taxa de entrega)'}`);
+      if (isEntrega) out.push('', `Endereço: ${ck.rua.trim()}${ck.complemento.trim() ? ' — ' + ck.complemento.trim() : ''}`, `Bairro: ${ck.bairro}`);
+      if (ck.obsGeral.trim()) out.push('', `Observação: ${ck.obsGeral.trim()}`);
+      out.push('', 'Aguardo a confirmação do pedido e da forma de pagamento.');
+      return out.join('\n');
+    };
+    const orderMsg = s.ckStep === 'preview' ? buildOrderMsg() : '';
+
+    // reserva
+    const rvF = this.fields('rv', 'rvErr', ['exp', 'data', 'hora', 'pessoas', 'nome', 'contato', 'obs'], this.validateRv);
+    const exps = this.rvExpsVisiveis(); const expSel = exps.find(x => x.id === s.rv.exp);
+    const now = this.nowSP(); const R = cfg.reservas;
+    const dateOk = s.rv.data && expSel && expSel.dias.includes(weekday(s.rv.data)) && s.rv.data >= now.date;
+    const horas = expSel ? (dateOk ? this.horasPara(expSel, s.rv.data) : this.horasPara(expSel, '0000-00-00')) : [];
+    const horaOpts = [{ v: '', l: expSel ? (dateOk && !horas.length ? 'Sem horários hoje' : 'Selecione') : 'Escolha a experiência' }, ...horas];
+    const rvMsg = s.rvStep === 'preview' ? ['Olá, Olivio! Gostaria de solicitar uma reserva.', '', `Nome: ${s.rv.nome.trim()}`, `Contato: ${s.rv.contato.trim()}`, `Experiência: ${expSel ? expSel.nome : ''}`, `Data desejada: ${fmtData(s.rv.data)} (${DIA1[weekday(s.rv.data || '2000-01-01')]})`, `Horário preferido: ${s.rv.hora}`, `Pessoas: ${s.rv.pessoas}`, ...(s.rv.obs.trim() ? ['', `Observação: ${s.rv.obs.trim()}`] : []), '', 'Aguardo a confirmação da disponibilidade.'].join('\n') : '';
+    const rvRegras = exps.map(x => ({ nome: x.nome, txt: `${this.diasTxt(x).replace('Dias aceitos: ', '').replace(/\.$/, '')} · ${x.horarios.length ? x.horarios[0].replace(':', 'h') + ' a ' + x.horarios[x.horarios.length - 1].replace(':', 'h') : 'horário a combinar com a equipe'}` }));
+
+    // eventos
+    const E = cfg.eventos; const evF = this.fields('ev', 'evErr', ['nome', 'contato', 'tipo', 'data', 'periodo', 'pessoas', 'formato', 'mensagem', 'orcamento'], this.validateEv);
+    const sel1 = (arr, ph) => [{ v: '', l: ph }, ...arr.map(x => ({ v: x, l: x }))];
+    const evMsg = s.evStep === 'preview' ? ['Olá, Olivio! Gostaria de solicitar uma proposta para um evento.', '', `Nome: ${s.ev.nome.trim()}`, `Contato: ${s.ev.contato.trim()}`, `Tipo: ${s.ev.tipo}`, `Data desejada: ${fmtData(s.ev.data)} (preferência)`, `Período: ${s.ev.periodo}`, `Pessoas (estimativa): ${s.ev.pessoas}`, `Formato: ${s.ev.formato}`, ...(s.ev.orcamento ? [`Faixa de orçamento: ${s.ev.orcamento}`] : []), '', 'Mensagem:', s.ev.mensagem.trim(), '', 'Entendo que a solicitação não bloqueia a data.'].join('\n') : '';
+
+    // japonesa
+    const NJ = cfg.noiteJaponesa;
+    const jp = { dia: NJ.dia, horarioTxt: NJ.horario || 'A confirmar', observacao: NJ.observacao, precos: NJ.precos.map(p => ({ nome: p.nome, nota: p.nota, precoTxt: brl(p.preco), unidadeTxt: UNID[p.unidade] })), itensDivulgados: NJ.itensDivulgados.map(g => ({ grupo: g.grupo, lista: g.itens.join(', ') })) };
+
+    const known = ['inicio', 'casa', 'experiencias', 'localizacao', 'cardapio', 'pedir', 'sacola', 'reservar', 'eventos', 'noite-japonesa', 'privacidade'];
+    const isHome = ['inicio', 'casa', 'experiencias', 'localizacao'].includes(page);
+    const isJaponesa = page === 'noite-japonesa' && jpOk;
+    const copyBlocked = () => this.toast('Copiado');
+
+    return {
+      ...base, navItems, c: C, telHref: 'tel:+' + C.telefoneE164, instaUrl: `https://www.instagram.com/${C.instagram}/`,
+      waOn, waOff: !waOn, cartCount, hasCart: cartCount > 0, cartEmpty: cartCount === 0, cartAria: cartCount ? `Sacola com ${cartCount} ${cartCount === 1 ? 'item' : 'itens'}` : 'Sacola vazia',
+      isHome, isMenuArea: isCardapio || isPedir, isCardapio, isPedir, isSacola: page === 'sacola', isReservar: page === 'reservar', isEventos: page === 'eventos', isJaponesa, isPrivacidade: page === 'privacidade',
+      isNotFound: !known.includes(page) || (page === 'noite-japonesa' && !jpOk),
+      hero: img(heroKey, '1080/760', '4/3'), heroFachada: heroKey === 'fachada', heroVaranda: heroKey === 'varanda', casa: img(casaKey, '1104/660', '4/3'), expList: expList.map(e => ({ ...e, temFoto: e.img.temFoto, semFoto: e.img.semFoto })), horariosList, valesTxt: cfg.pagamento.vales.join(', '),
+      onlineResumo: onlineList.length ? `Pratos, porções e sobremesas selecionados para ${[retiradaOn ? 'retirada' : null, entregaOn ? 'entrega' : null].filter(Boolean).join(' e ')}.` : 'Nenhum item disponível para pedido online no momento.',
+      destaques, hasDestaques: destaques.length > 0, modalidadesTxt,
+      menuTitle: isPedir ? 'Pedir online' : 'Cardápio da casa', menuScreenLabel: isPedir ? 'Pedir online' : 'Cardápio da casa',
+      menuIntro: isPedir ? `${modalidadesTxt} Escolha os itens e envie o pedido pelo WhatsApp.` : 'Itens servidos no salão, com indicação de quais também podem ser pedidos online.',
+      tabCasaSel: isCardapio ? 'true' : 'false', tabPedirSel: isPedir ? 'true' : 'false',
+      tabCasaBg: isCardapio ? '#703446' : 'transparent', tabCasaFg: isCardapio ? '#fff' : '#703446', tabPedirBg: isPedir ? '#703446' : 'transparent', tabPedirFg: isPedir ? '#fff' : '#703446',
+      q: s.q, onQ: e => this.setState({ q: e.target.value }), catChips, cardSections, noSalao, pedirList: isPedir ? filtered.map(tile) : [],
+      menuResultsTxt: nRes === 1 ? '1 item' : `${nRes} itens`, menuEmpty: nRes === 0,
+      menuEmptyTitle: areaList.length ? 'Nenhum item encontrado' : 'Cardápio em atualização', menuEmptyText: areaList.length ? 'Tente outra palavra ou categoria.' : 'Os itens serão publicados assim que o catálogo for confirmado.',
+      clearMenuFilters: () => this.setState({ q: '', cat: '' }),
+      modalOpen, m, modalPad: isMobile ? '0' : '24px', modalMaxH: isMobile ? '92vh' : '86vh', modalRadius: isMobile ? '10px 10px 0 0' : '4px',
+      lines, subtotalTxt: brl(subtotal), isEntrega, taxaTxt: taxa == null ? 'A confirmar' : brl(taxa), totalTxt: totalConhecido ? brl(subtotal + (taxa || 0)) : 'A confirmar',
+      pagamentoTxt: pagTxt ? `Formas de pagamento: ${pagTxt}.` : 'Formas de pagamento para esta modalidade: a confirmar com a equipe. Não há pagamento online nesta versão.',
+      ck: ckF, modOpts, bairroOpts: [{ v: '', l: 'Selecione o bairro' }, ...cfg.modalidades.entrega.bairros.map(b => ({ v: b.nome, l: b.nome + (b.taxa != null ? ` — ${brl(b.taxa)}` : ' — taxa a confirmar') }))],
+      entregaIndisponivelMsg: !entregaOn, ckHasErrors: Object.keys(s.ckErr).filter(k => s.ckErr[k]).length > 0,
+      ckFormStep: s.ckStep === 'form', ckPreviewStep: s.ckStep === 'preview', orderMsg, orderWaHref: waOn ? this.waHref(orderMsg) : '',
+      submitOrder: e => {
+        e.preventDefault(); const f = { ...ck, modalidade: mod || '' }; const errs = this.validateCk(f);
+        if (lines.some(l => l.bad)) { this.toast('Há itens com aviso na sacola. Ajuste antes de enviar.'); return; }
+        if (Object.keys(errs).length) { this.setState({ ckErr: errs, ck: f }, () => this.focusFirst(errs, { modalidade: 'checkout', nome: 'ck-nome', contato: 'ck-contato', bairro: 'ck-bairro', rua: 'ck-rua' })); return; }
+        this.setState({ ck: f, ckErr: {}, ckStep: 'preview' }, () => { this.focusArea('checkout'); if (waOn) window.open(this.waHref(buildOrderMsg()), '_blank', 'noopener'); });
+      },
+      copyOrder: () => this.copy(orderMsg, 'Mensagem copiada'), editOrder: () => this.setState({ ckStep: 'form' }, () => this.focusArea('checkout')),
+      clearCart: () => { if (window.confirm('Esvaziar a sacola?')) { this.saveCart([]); this.setState({ cart: [], ckStep: 'form' }); this.toast('Sacola esvaziada'); } },
+
+      rv: rvF, expOpts: exps.map(x => ({ id: x.id, nome: x.nome, checked: s.rv.exp === x.id, bd: s.rv.exp === x.id ? '#703446' : (s.rvErr.exp ? ERR : '#D9CFC0'), bg: s.rv.exp === x.id ? '#F7F1E7' : '#fff', pick: () => this.setState(st => { const ne = { ...st.rvErr }; delete ne.exp; delete ne.hora; if (ne.data) delete ne.data; return { rv: { ...st.rv, exp: x.id, hora: '' }, rvErr: ne }; }) })),
+      diasTxt: this.diasTxt(expSel), horaOpts, dateMin: now.date, dateMax: addDays(now.date, R.diasMaximos), rvMinPessoas: R.pessoasMin, rvMaxPessoas: R.pessoasMax, rvRegras,
+      rvHasErrors: Object.keys(s.rvErr).length > 0, rvFormStep: s.rvStep === 'form', rvPreviewStep: s.rvStep === 'preview', rvMsg, rvWaHref: waOn ? this.waHref(rvMsg) : '',
+      submitRv: e => { e.preventDefault(); const errs = this.validateRv(s.rv); if (Object.keys(errs).length) { this.setState({ rvErr: errs }, () => this.focusFirst(errs, { exp: 'rv-area', data: 'rv-data', hora: 'rv-hora', pessoas: 'rv-pessoas', nome: 'rv-nome', contato: 'rv-contato' })); return; } this.setState({ rvErr: {}, rvStep: 'preview' }, () => this.focusArea('rv-area')); },
+      copyRv: () => this.copy(rvMsg, 'Solicitação copiada'), editRv: () => this.setState({ rvStep: 'form' }, () => this.focusArea('rv-area')),
+
+      ev: evF, tipoOpts: sel1(E.tipos, 'Selecione'), periodoOpts: sel1(E.periodos, 'Selecione'), orcOpts: sel1(E.faixasOrcamento, 'Não informar'),
+      formatoOpts: E.formatos.map(v => ({ v, l: v, checked: s.ev.formato === v, bd: s.ev.formato === v ? '#703446' : (s.evErr.formato ? ERR : '#D9CFC0'), bg: s.ev.formato === v ? '#F7F1E7' : '#fff', pick: () => this.setState(st => { const ne = { ...st.evErr }; delete ne.formato; return { ev: { ...st.ev, formato: v }, evErr: ne }; }) })),
+      evDateMin: addDays(now.date, 1), evHasErrors: Object.keys(s.evErr).length > 0, evFormStep: s.evStep === 'form', evPreviewStep: s.evStep === 'preview', evMsg, evWaHref: waOn ? this.waHref(evMsg) : '',
+      goEvForm: e => { e.preventDefault(); this.focusArea('ev-area'); },
+      submitEv: e => { e.preventDefault(); const errs = this.validateEv(s.ev); if (Object.keys(errs).length) { this.setState({ evErr: errs }, () => this.focusFirst(errs, { nome: 'ev-nome', contato: 'ev-contato', tipo: 'ev-tipo', data: 'ev-data', periodo: 'ev-periodo', pessoas: 'ev-pessoas', formato: 'ev-area', mensagem: 'ev-msg' })); return; } this.setState({ evErr: {}, evStep: 'preview' }, () => this.focusArea('ev-area')); },
+      copyEv: () => this.copy(evMsg, 'Solicitação copiada'), editEv: () => this.setState({ evStep: 'form' }, () => this.focusArea('ev-area')),
+
+      jp, jpImg: img('japonesa', '1448/1040', '4/3'), jpPendente: !NJ.validado, jpImgMarcar: false,
+      privacidade: PRIV, atualizadoTxt: fmtData(cfg.atualizadoEm)
+    };
+  }
+}
+</script>
+</body>
+</html>
